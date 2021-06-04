@@ -6,7 +6,7 @@ namespace alexbegh.vMerge.StudioIntegration.Framework
 {
     static partial class GuidList
     {
-        public const string guidvMergePkgString = "39d1c61d-9a6d-4d9c-a9ea-b81c4265333a";
+        public const string guidvMergePkgString = "B7EA39B8-F705-40E8-B008-0E2E503293A7";
 
         public const string guidWorkItemsToolWindowPersistanceString = "ec10ec1c-57aa-4402-8e88-ed7a2b73ae4a";
         public const string guidChangesetsToolWindowPersistanceString = "ec10ec1c-57aa-4402-8e88-ed7a2b73ae4b";

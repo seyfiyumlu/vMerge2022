@@ -86,7 +86,7 @@
 
   <Symbols>
     <!-- This is the package guid. -->
-    <GuidSymbol name="guidvMergePkg" value="{39d1c61d-9a6d-4d9c-a9ea-b81c4265333a}" />
+    <GuidSymbol name="guidvMergePkg" value="{B7EA39B8-F705-40E8-B008-0E2E503293A7}" />
     
     <GuidSymbol name="guidImages" value="{8971da14-a564-4eca-be6c-eae4cbd30088}" >
       <IDSymbol name="bmpPic1" value="1" />
