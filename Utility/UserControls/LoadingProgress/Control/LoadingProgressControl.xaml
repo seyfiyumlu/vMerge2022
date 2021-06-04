@@ -1,0 +1,58 @@
+﻿<UserControl x:Class="alexbegh.Utility.UserControls.LoadingProgress.Control.LoadingProgressControl"
+             x:Name="LoadingProgressUC"
+             xmlns:LoadingAnimation="clr-namespace:alexbegh.Utility.UserControls.LoadingProgress.Control"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:ui="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+             xmlns:diagnostics="clr-namespace:System.Diagnostics;assembly=WindowsBase"
+             xmlns:MetroControls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <UserControl.Resources>
+        <Style TargetType="{x:Type ProgressBar}" />
+    </UserControl.Resources>
+    <UserControl.ContentTemplate>
+        <DataTemplate>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <ContentPresenter Grid.Row="0" Grid.Column="0" Content="{TemplateBinding Content}" />
+                <MetroControls:ProgressRing 
+                    IsActive="True" 
+                    HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="0" Grid.Column="0"
+                    Visibility="{Binding ElementName=LoadingProgressUC, Path=BigIndicatorVisibility}" />
+                <Rectangle Fill="#333333" Stroke="#333333" Grid.Column="0" Grid.Row="0" Opacity="0.5" Visibility="{Binding ElementName=LoadingProgressUC, Path=SmallIndicatorVisibility}"/>
+                <Rectangle Fill="#333333" Stroke="#333333" Grid.Column="0" Grid.Row="0" Opacity="0.5" Visibility="{Binding ElementName=LoadingProgressUC, Path=BigIndicatorVisibility}"/>
+                <ProgressBar Grid.Row="0" Grid.Column="0" IsIndeterminate="True" Visibility="{Binding ElementName=LoadingProgressUC, Path=SmallIndicatorVisibility}" />
+                <StackPanel Orientation="Vertical" 
+                            Grid.Column="0" Grid.Row="0"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            Visibility="{Binding ElementName=LoadingProgressUC, Path=BigIndicatorVisibility}" >
+                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding ElementName=LoadingProgressUC, Path=Progress.ProgressText}" FontSize="10" TextAlignment="Center">
+                        <TextBlock.Effect>
+                            <DropShadowEffect BlurRadius="2" ShadowDepth="1" />
+                        </TextBlock.Effect>
+                    </TextBlock>
+                </StackPanel>
+                <StackPanel Orientation="Vertical" 
+                            Grid.Column="0" Grid.Row="0"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            Visibility="{Binding ElementName=LoadingProgressUC, Path=SmallIndicatorVisibility}" >
+                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" Text="{Binding ElementName=LoadingProgressUC, Path=Progress.ProgressText}">
+                        <TextBlock.Effect>
+                            <DropShadowEffect Color="White" BlurRadius="1" ShadowDepth="0" />
+                        </TextBlock.Effect>
+                    </TextBlock>
+                </StackPanel>
+            </Grid>
+        </DataTemplate>
+    </UserControl.ContentTemplate>
+</UserControl>

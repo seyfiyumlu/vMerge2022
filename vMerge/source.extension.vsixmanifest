@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
+    <Metadata>
+        <Identity Id="39d1c61d-9a6d-4d9c-a9ea-b81c4265333a" Version="2.0.5" Language="en-US" Publisher="seyfettin.yumlu" />
+        <DisplayName>vMerge VS2019</DisplayName>
+        <Description xml:space="preserve">vMerge is a visual merge tool for Microsoft Team Foundation Server (tm) providing lots of additional features over the built-in merge capabilities.</Description>
+        <MoreInfo>https://github.com/seyfiyumlu/vmerge</MoreInfo>
+        <License>LICENCE.txt</License>
+        <GettingStartedGuide>LICENCE.txt</GettingStartedGuide>
+        <ReleaseNotes>LICENCE.txt</ReleaseNotes>
+        <Icon>vMerge_small.png</Icon>
+        <PreviewImage>vMerge Image 200x200.png</PreviewImage>
+        <Tags>Microsoft Team Foundation Server; vMerge; visual merge; xeam; cherry picking; work item based merge; merge; changeset merge; work item merge; workitem merge</Tags>
+    </Metadata>
+    <Installation InstalledByMsi="false">
+        <InstallationTarget Version="[16.0,17.0)" Id="Microsoft.VisualStudio.Pro" />
+        <InstallationTarget Version="[16.0,17.0)" Id="Microsoft.VisualStudio.Enterprise" />
+    </Installation>
+    <Dependencies>
+        <Dependency Id="Microsoft.Framework.NDP" DisplayName="Microsoft .NET Framework" d:Source="Manual" Version="4.7" />
+        <Dependency Id="Microsoft.VisualStudio.MPF.11.0" DisplayName="Visual Studio MPF 11.0" d:Source="Installed" Version="11.0" />
+    </Dependencies>
+    <Assets>
+        <Asset Type="Microsoft.VisualStudio.VsPackage" d:Source="Project" d:ProjectName="%CurrentProject%" Path="|%CurrentProject%;PkgdefProjectOutputGroup|" />
+    </Assets>
+    <Prerequisites>
+        <Prerequisite Id="Microsoft.Net.Component.4.7.2.TargetingPack" Version="[16.9.31004.209,17.0)" DisplayName=".NET Framework 4.7.2 targeting pack" />
+    </Prerequisites>
+</PackageManifest>

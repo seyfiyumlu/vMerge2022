@@ -1,0 +1,86 @@
+﻿<ui1:DialogWindow  xmlns:ui1="clr-namespace:Microsoft.VisualStudio.PlatformUI;assembly=Microsoft.VisualStudio.Shell.15.0" x:Class="alexbegh.vMerge.View.Dialog.ConfigureColumnsDialogWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:ui="clr-namespace:Microsoft.VisualStudio.PlatformUI;assembly=Microsoft.VisualStudio.Shell.12.0"
+        Icon="/vMerge;component/Resources/vMerge_small_16.png"
+        Background="{DynamicResource VsBrush.Window}"
+        Foreground="{DynamicResource VsBrush.WindowText}"
+        Height="300" Width="500">
+    <ui1:DialogWindow.Resources>
+        <ResourceDictionary Source="..\..\MainResources.xaml" />
+    </ui1:DialogWindow.Resources>
+    <ui1:DialogWindow.Title>
+        <MultiBinding StringFormat="vMerge: Configure {0} View">
+            <Binding Path="ConfigurationName" />
+        </MultiBinding>
+    </ui1:DialogWindow.Title>
+    <Grid Margin="3">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="10" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="5" >
+            <TextBlock.Text>
+                <MultiBinding StringFormat="Select the columns to display in the {0} viewer.">
+                    <Binding Path="ConfigurationName" />
+                </MultiBinding>
+            </TextBlock.Text>
+        </TextBlock>
+        <Button Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Command="{Binding Path=MoveSelectedUpCommand}">Move Up</Button>
+        <Button Grid.Row="3" Grid.Column="3" Grid.ColumnSpan="2" Command="{Binding Path=MoveAvailableUpCommand}">Move Up</Button>
+        <Button Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" Command="{Binding Path=MoveSelectedDownCommand}">Move Down</Button>
+        <Button Grid.Row="5" Grid.Column="3" Grid.ColumnSpan="2" Command="{Binding Path=MoveAvailableDownCommand}">Move Down</Button>
+        <TextBlock Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" FontWeight="Bold">
+            Selected columns:
+        </TextBlock>
+        <Grid Grid.Column="0" Grid.Row="4" Grid.ColumnSpan="2">
+            <ListBox ItemsSource="{Binding Path=SelectedColumns}" DisplayMemberPath="Header" SelectedItem="{Binding Path=SelectedVisibleColumn}">
+            </ListBox>
+        </Grid>
+        <TextBlock Grid.Row="2" Grid.Column="3" Grid.ColumnSpan="2" FontWeight="Bold">
+            Available columns:
+        </TextBlock>
+        <Grid Grid.Column="3" Grid.Row="4" Grid.ColumnSpan="2">
+            <ListBox ItemsSource="{Binding Path=AvailableColumns}" DisplayMemberPath="Header" SelectedItem="{Binding Path=SelectedInvisibleColumn}">
+            </ListBox>
+        </Grid>
+        <StackPanel Orientation="Vertical" Grid.Column="2" Grid.Row="4" VerticalAlignment="Center" Margin="5">
+            <Button Command="{Binding Path=ShowColumnCommand}">
+                <StackPanel Orientation="Vertical">
+                    <TextBlock HorizontalAlignment="Center">
+                    &lt;--
+                    </TextBlock>
+                    <TextBlock HorizontalAlignment="Center">
+                    Add column
+                    </TextBlock>
+                </StackPanel>
+            </Button>
+            <TextBlock />
+            <Button Command="{Binding Path=HideColumnCommand}">
+                <StackPanel Orientation="Vertical">
+                    <TextBlock HorizontalAlignment="Center">
+                    --&gt;
+                    </TextBlock>
+                    <TextBlock HorizontalAlignment="Center">
+                    Remove column
+                    </TextBlock>
+                </StackPanel>
+            </Button>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="5" HorizontalAlignment="Right" Margin="3,6,3,3">
+            <Button Margin="3" Padding="13,0,13,0" IsDefault="True" IsCancel="True" Command="{Binding Path=OKCommand}">OK</Button>
+        </StackPanel>
+    </Grid>
+</ui1:DialogWindow>

@@ -1,0 +1,215 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CommandTable xmlns="http://schemas.microsoft.com/VisualStudio/2005-10-18/CommandTable" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <!--  This is the file that defines the actual layout and type of the commands.
+        It is divided in different sections (e.g. command definition, command
+        placement, ...), with each defining a specific set of properties.
+        See the comment before each section for more details about how to
+        use it. -->
+  <!--  The VSCT compiler (the tool that translates this file into the binary 
+        format that VisualStudio will consume) has the ability to run a preprocessor 
+        on the vsct file; this preprocessor is (usually) the C++ preprocessor, so 
+        it is possible to define includes and macros with the same syntax used 
+        in C++ files. Using this ability of the compiler here, we include some files 
+        defining some of the constants that we will use inside the file. -->
+  <!--This is the file that defines the IDs for all the commands exposed by VisualStudio. -->
+  <Extern href="stdidcmd.h" />
+  <!--This header contains the command ids for the menus provided by the shell. -->
+  <Extern href="vsshlids.h" />
+  <!--The Commands section is where we the commands, menus and menu groups are defined.
+      This section uses a Guid to identify the package that provides the command defined inside it. -->
+  <Commands package="guidvMergePkg">
+    <!-- Inside this section we have different sub-sections: one for the menus, another  
+    for the menu groups, one for the buttons (the actual commands), one for the combos 
+    and the last one for the bitmaps used. Each element is identified by a command id that  
+    is a unique pair of guid and numeric identifier; the guid part of the identifier is usually  
+    called "command set" and is used to group different command inside a logically related  
+    group; your package should define its own command set in order to avoid collisions  
+    with command ids defined by other packages. -->
+    <Menus>
+      <!--In this section you can define new menu groups. A menu group is a container for 
+      other menus or buttons (commands); from a visual point of view you can see the 
+      group as the part of a menu contained between two lines. The parent of a group 
+      must be a menu. -->
+      <Menu guid="ToolsMenu" id="ToolsMenu" priority="0x8000" type="Menu">
+        <Parent guid="guidRootTools" id="idRootToolsGroup" />
+        <Strings>
+          <ButtonText>&amp;vMerge</ButtonText>
+        </Strings>
+      </Menu>
+      <Menu guid="MergeContextMenu" id="MergeContextMenu" priority="0x8000" type="Menu">
+        <Parent guid="guidRootSourceControlExplorerContext" id="idRootSourceControlExplorerContextGroup" />
+        <Strings>
+          <ButtonText>Merge with &amp;vMerge</ButtonText>
+        </Strings>
+      </Menu>
+      <Menu guid="OpenChangesetViewContextMenu" id="OpenChangesetViewContextMenu" priority="0x8001" type="Menu">
+        <Parent guid="guidRootSourceControlExplorerContext" id="idRootSourceControlExplorerContextGroup" />
+        <Strings>
+          <ButtonText>O&amp;pen in vMerge changeset view</ButtonText>
+        </Strings>
+      </Menu>
+    </Menus>
+    <!-- In this section you can define new menu groups. A menu group is a container for 
+         other menus or buttons (commands); from a visual point of view you can see the 
+         group as the part of a menu contained between two lines. The parent of a group 
+         must be a menu. -->
+    <Groups>
+      <Group guid="guidRootTools" id="idRootToolsGroup" priority="0x8000">
+        <Parent guid="guidSHLMainMenu" id="IDM_VS_MENU_TOOLS" />
+      </Group>
+      <Group guid="ToolsMenu" id="idToolsVMergeGroup" priority="0x8000">
+        <Parent guid="ToolsMenu" id="ToolsMenu" />
+      </Group>
+      <Group guid="ToolsMenu" id="idVMergeGroup" priority="0x8001">
+        <Parent guid="ToolsMenu" id="ToolsMenu" />
+      </Group>
+      <Group guid="guidRootHelp" id="idRootHelpGroup" priority="0x8000">
+        <Parent guid="guidSHLMainMenu" id="IDM_VS_MENU_HELP" />
+      </Group>
+      <Group guid="guidRootSourceControlExplorerContext" id="idRootSourceControlExplorerContextGroup" priority="0x8000">
+        <Parent guid="BranchMergeMenuGuid" id="BM" />
+      </Group>
+      <Group guid="MergeContextMenu" id="idSourceControlExplorerContextMergeWithVMergeGroup" priority="0x8000">
+        <Parent guid="MergeContextMenu" id="MergeContextMenu" />
+      </Group>
+      <Group guid="MergeContextMenu" id="idMergeWithVMergeGroup" priority="0x8001">
+        <Parent guid="MergeContextMenu" id="MergeContextMenu" />
+      </Group>
+      <Group guid="OpenChangesetViewContextMenu" id="idSourceControlExplorerContextOPenInVMergeChangesetViewGroup" priority="0x8001">
+        <Parent guid="OpenChangesetViewContextMenu" id="OpenChangesetViewContextMenu" />
+      </Group>
+    </Groups>
+    <Combos>
+      <Combo guid="ToolsMenu" id="SwitchToSettings" idCommandList="idVMergeActiveMergeProfileCommandList" priority="0x8000" defaultWidth="200">
+        <Parent guid="ToolsMenu" id="idToolsVMergeGroup" />
+        <Strings>
+          <MenuText>Active merge profile:</MenuText>
+          <ButtonText>Active merge profile:</ButtonText>
+        </Strings>
+      </Combo>
+    </Combos>
+    <!--Buttons section. -->
+    <!--This section defines the elements the user can interact with, like a menu command or a button 
+        or combo box in a toolbar. -->
+    <Buttons>
+      <!--To define a menu group you have to specify its ID, the parent menu and its display priority. 
+          The command is visible and enabled by default. If you need to change the visibility, status, etc, you can use
+          the CommandFlag node.
+          You can add more than one CommandFlag node e.g.:
+              <CommandFlag>DefaultInvisible</CommandFlag>
+              <CommandFlag>DynamicVisibility</CommandFlag>
+          If you do not want an image next to your command, remove the Icon node /> -->
+      <Button guid="ToolsMenu" id="ShowWorkItemView" priority="0x8000" type="Button">
+        <Parent guid="ToolsMenu" id="idVMergeGroup" />
+        <Strings>
+          <ButtonText>Show work item view</ButtonText>
+          <LocCanonicalName>ToolsMenu..ShowWorkItemView</LocCanonicalName>
+        </Strings>
+      </Button>
+      <Button guid="ToolsMenu" id="ShowChangesetView" priority="0x8001" type="Button">
+        <Parent guid="ToolsMenu" id="idVMergeGroup" />
+        <Strings>
+          <ButtonText>Show changeset view</ButtonText>
+          <LocCanonicalName>ToolsMenu..ShowChangesetView</LocCanonicalName>
+        </Strings>
+      </Button>
+      <Button guid="guidRootHelp" id="ShowVMergeHelp" priority="0x8000" type="Button">
+        <Parent guid="guidRootHelp" id="idRootHelpGroup" />
+        <Strings>
+          <ButtonText>&amp;vMerge Help</ButtonText>
+          <LocCanonicalName>VMergeHelp</LocCanonicalName>
+        </Strings>
+      </Button>
+      <Button guid="MergeContextMenu" id="TargetBranch" priority="0x8000" type="Button">
+        <Parent guid="MergeContextMenu" id="idSourceControlExplorerContextMergeWithVMergeGroup" />
+        <CommandFlag>DynamicItemStart</CommandFlag>
+        <Strings>
+          <ButtonText>No branches available</ButtonText>
+          <LocCanonicalName>MergeContextMenu.NoBranchesAvailable</LocCanonicalName>
+        </Strings>
+      </Button>
+      <Button guid="MergeContextMenu" id="RefreshBranches" priority="0x8002" type="Button">
+        <Parent guid="MergeContextMenu" id="idSourceControlExplorerContextMergeWithVMergeGroup" />
+        <Strings>
+          <ButtonText>Refresh branch list</ButtonText>
+          <LocCanonicalName>MergeContextMenu.RefreshBranchList</LocCanonicalName>
+        </Strings>
+      </Button>
+      <Button guid="MergeContextMenu" id="MatchingProfiles" priority="0x8000" type="Button">
+        <Parent guid="MergeContextMenu" id="idMergeWithVMergeGroup" />
+        <CommandFlag>DynamicItemStart</CommandFlag>
+        <Strings>
+          <ButtonText>No profiles yet</ButtonText>
+          <LocCanonicalName>MergeContextMenu..NoProfilesYet</LocCanonicalName>
+        </Strings>
+      </Button>
+      <Button guid="OpenChangesetViewContextMenu" id="TargetBranch2" priority="0x8000" type="Button">
+        <Parent guid="OpenChangesetViewContextMenu" id="idSourceControlExplorerContextOPenInVMergeChangesetViewGroup" />
+        <CommandFlag>DynamicItemStart</CommandFlag>
+        <Strings>
+          <ButtonText>No branches available</ButtonText>
+          <LocCanonicalName>OpenChangesetViewContextMenu.NoBranchesAvailable</LocCanonicalName>
+        </Strings>
+      </Button>
+    </Buttons>
+    <!--The bitmaps section is used to define the bitmaps that are used for the commands.-->
+    <Bitmaps>
+      <!--  The bitmap id is defined in a way that is a little bit different from the others: 
+            the declaration starts with a guid for the bitmap strip, then there is the resource id of the 
+            bitmap strip containing the bitmaps and then there are the numeric ids of the elements used 
+            inside a button definition. An important aspect of this declaration is that the element id 
+            must be the actual index (1-based) of the bitmap inside the bitmap strip. -->
+      <Bitmap guid="guidImages" href="..\..\Resources\Images.png" usedList="bmpPic1, bmpPic2, bmpPicSearch, bmpPicX, bmpPicArrows" />
+    </Bitmaps>
+  </Commands>
+  <Symbols>
+    <!-- This is the package guid. -->
+    <GuidSymbol name="guidvMergePkg" value="{39d1c61d-9a6d-4d9c-a9ea-b81c4265333a}" />
+    <GuidSymbol name="guidImages" value="{8971da14-a564-4eca-be6c-eae4cbd30088}">
+      <IDSymbol name="bmpPic1" value="1" />
+      <IDSymbol name="bmpPic2" value="2" />
+      <IDSymbol name="bmpPicSearch" value="3" />
+      <IDSymbol name="bmpPicX" value="4" />
+      <IDSymbol name="bmpPicArrows" value="5" />
+      <IDSymbol name="bmpPicStrikethrough" value="6" />
+    </GuidSymbol>
+    <GuidSymbol name="BranchMergeMenuGuid" value="{FFE1131C-8EA1-4D05-9728-34AD4611BDA9}">
+      <IDSymbol name="BM" value="0x1089" />
+    </GuidSymbol>
+    <GuidSymbol name="guidRootTools" value="{f15bc0ff-40a7-4972-88ab-49930de605b3}">
+      <IDSymbol name="idRootToolsGroup" value="0x0100" />
+      <IDSymbol name="idRootTools" value="0x0110" />
+    </GuidSymbol>
+    <GuidSymbol name="ToolsMenu" value="{ed8b0c70-223d-470f-a44e-03ac40e35539}">
+      <IDSymbol name="idToolsVMergeGroup" value="0x0100" />
+      <IDSymbol name="ToolsMenu" value="0x0110" />
+      <IDSymbol name="SwitchToSettings" value="0x0120" />
+      <IDSymbol name="idVMergeActiveMergeProfileCommandList" value="0x0130" />
+      <IDSymbol name="idVMergeGroup" value="0x0140" />
+      <IDSymbol name="ShowWorkItemView" value="0x0150" />
+      <IDSymbol name="ShowChangesetView" value="0x0160" />
+    </GuidSymbol>
+    <GuidSymbol name="guidRootHelp" value="{792dc125-3e73-451c-bb3e-8712ebb7d04b}">
+      <IDSymbol name="idRootHelpGroup" value="0x0100" />
+      <IDSymbol name="idRootHelp" value="0x0110" />
+      <IDSymbol name="ShowVMergeHelp" value="0x0120" />
+    </GuidSymbol>
+    <GuidSymbol name="guidRootSourceControlExplorerContext" value="{4fb87b9b-7cf1-49e4-b179-400a3f98606b}">
+      <IDSymbol name="idRootSourceControlExplorerContextGroup" value="0x0100" />
+      <IDSymbol name="idRootSourceControlExplorerContext" value="0x0110" />
+    </GuidSymbol>
+    <GuidSymbol name="MergeContextMenu" value="{2d82c516-22ad-4079-b8e7-9c1444637413}">
+      <IDSymbol name="idSourceControlExplorerContextMergeWithVMergeGroup" value="0x0100" />
+      <IDSymbol name="MergeContextMenu" value="0x0110" />
+      <IDSymbol name="TargetBranch" value="0x0120" />
+      <IDSymbol name="idMergeWithVMergeGroup" value="0x0163" />
+      <IDSymbol name="MatchingProfiles" value="0x0173" />
+      <IDSymbol name="RefreshBranches" value="0x01B6" />
+    </GuidSymbol>
+    <GuidSymbol name="OpenChangesetViewContextMenu" value="{8005553e-bbc2-4241-94b3-8fd67aca4d12}">
+      <IDSymbol name="idSourceControlExplorerContextOPenInVMergeChangesetViewGroup" value="0x0100" />
+      <IDSymbol name="OpenChangesetViewContextMenu" value="0x0110" />
+      <IDSymbol name="TargetBranch2" value="0x0120" />
+    </GuidSymbol>
+  </Symbols>
+</CommandTable>

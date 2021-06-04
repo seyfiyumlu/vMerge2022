@@ -1,0 +1,15 @@
+﻿<ui1:DialogWindow  xmlns:ui1="clr-namespace:Microsoft.VisualStudio.PlatformUI;assembly=Microsoft.VisualStudio.Shell.15.0" x:Class="alexbegh.vMerge.View.Dialog.CheckInSummaryDialogWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:ui="clr-namespace:Microsoft.VisualStudio.PlatformUI;assembly=Microsoft.VisualStudio.Shell.12.0"
+        xmlns:vsi="clr-namespace:Microsoft.VisualStudio.PlatformUI;assembly=Microsoft.VisualStudio.Shell.UI.Internal"
+        xmlns:uc="clr-namespace:alexbegh.vMerge.View.Controls"
+        Background="{DynamicResource VsBrush.Window}"
+        Foreground="{DynamicResource VsBrush.WindowText}"
+        Title="vMerge - Check in" Height="400" Width="600"
+        ShowActivated="True" ShowInTaskbar="False" WindowStartupLocation="CenterOwner" HasMaximizeButton="True">
+    <ui1:DialogWindow.Resources>
+        <ResourceDictionary Source="..\..\MainResources.xaml" />
+    </ui1:DialogWindow.Resources>
+    <uc:CheckInSummaryControl />
+</ui1:DialogWindow>

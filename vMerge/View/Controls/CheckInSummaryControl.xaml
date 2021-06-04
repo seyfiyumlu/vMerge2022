@@ -1,0 +1,210 @@
+﻿<UserControl x:Class="alexbegh.vMerge.View.Controls.CheckInSummaryControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             Background="{DynamicResource VsBrush.Window}"
+             Foreground="{DynamicResource VsBrush.WindowText}"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <UserControl.Resources>
+        <ResourceDictionary Source="..\..\MainResources.xaml" />
+    </UserControl.Resources>
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <ScrollViewer VerticalScrollBarVisibility="Auto" Grid.Row="0">
+            <StackPanel Orientation="Vertical">
+                <TextBlock FontWeight="Bold">
+                    <TextBlock.Text>
+                        <MultiBinding StringFormat="Related work items ({0})">
+                            <Binding Path="AssociatedWorkItems.Count" />
+                        </MultiBinding>
+                    </TextBlock.Text>
+                </TextBlock>
+                <TextBlock Visibility="{Binding Path=AssociatedWorkItems, Converter={StaticResource EmptyListToVisibilityConverter}}"
+                           Margin="20,10,0,5" 
+                           FontWeight="Light">
+                    No related work items
+                </TextBlock>
+                <DataGrid Name="WorkItemsGrid" Visibility="{Binding Path=AssociatedWorkItems, Converter={StaticResource NonEmptyListToVisibilityConverter}}"
+                            ItemsSource="{Binding Path=AssociatedWorkItems}" AutoGenerateColumns="False" HeadersVisibility="None" GridLinesVisibility="None" 
+                            CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True" Margin="20,10,0,5" BorderBrush="Gray" BorderThickness="1">
+                    <DataGrid.Resources>
+                        <Style x:Key="CellStyle" TargetType="{x:Type DataGridCell}">
+                            <Setter Property="Foreground" Value="Black" />
+                            <Style.Triggers>
+                                <Trigger Property="IsSelected" Value="True">
+                                    <Setter Property="Background" Value="{x:Null}" />
+                                    <Setter Property="BorderBrush" Value="{x:Null}" />
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </DataGrid.Resources>
+                    <DataGrid.Columns>
+                        <DataGridTemplateColumn Header="Work Item Id" SortMemberPath="WorkItem.Id" Width="70">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock>
+                                    <Hyperlink Command="{Binding Path=DataContext.OpenWorkItemCommand, RelativeSource={RelativeSource FindAncestor, AncestorType=DataGrid}}" CommandParameter="{Binding Path=WorkItem.Id}">
+                                        <TextBlock Text="{Binding Path=WorkItem.Id}" />
+                                    </Hyperlink>
+                                </TextBlock>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTextColumn Header="Title" Binding="{Binding Path=WorkItem.Title}" Width="*" />
+                    </DataGrid.Columns>
+                </DataGrid>
+                <Separator Margin="0,0,0,10" />
+                <TextBlock FontWeight="Bold">
+                    <TextBlock.Text>
+                        <MultiBinding StringFormat="Source changesets ({0})">
+                            <Binding Path="SourceChangesets.Count" />
+                        </MultiBinding>
+                    </TextBlock.Text>
+                </TextBlock>
+                <TextBlock Visibility="{Binding Path=SourceChangesets, Converter={StaticResource EmptyListToVisibilityConverter}}"
+                           Margin="20,10,0,5" 
+                           FontWeight="Light">
+                    No associated changesets
+                </TextBlock>
+                <DataGrid Name="SourceChangesetsGrid" ItemsSource="{Binding Path=SourceChangesets}" AutoGenerateColumns="False" HeadersVisibility="None" GridLinesVisibility="None"
+                          Visibility="{Binding Path=SourceChangesets, Converter={StaticResource NonEmptyListToVisibilityConverter}}"
+                          Margin="20,10,0,5" BorderBrush="Gray" BorderThickness="1">
+                    <DataGrid.Columns>
+                        <DataGridTemplateColumn Header="Changeset Id" SortMemberPath="Changeset.ChangesetId" Width="70">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock>
+                                    <Hyperlink Command="{Binding Path=DataContext.OpenChangesetCommand, RelativeSource={RelativeSource FindAncestor, AncestorType=DataGrid}}" CommandParameter="{Binding Path=Changeset.ChangesetId}">
+                                        <TextBlock Text="{Binding Path=Changeset.ChangesetId}" />
+                                    </Hyperlink>
+                                </TextBlock>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTextColumn Header="Comment" Binding="{Binding Path=Description}" Width="*"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+                <Separator Margin="0,0,0,10" />
+                <TextBlock FontWeight="Bold">
+                    <TextBlock.Text>
+                        <MultiBinding StringFormat="Changed files ({0}, {1} of which had conflicts)">
+                            <Binding Path="Changes.Count" />
+                            <Binding Path="ConflictCount" />
+                        </MultiBinding>
+                    </TextBlock.Text>
+                </TextBlock>
+                <TextBlock Visibility="{Binding Path=Changes, Converter={StaticResource EmptyListToVisibilityConverter}}"
+                           Margin="20,10,0,5" 
+                           FontWeight="Light">
+                    No changes
+                </TextBlock>
+                <DataGrid ItemsSource="{Binding Path=Changes}" AutoGenerateColumns="False" GridLinesVisibility="None"
+                          Visibility="{Binding Path=Changes, Converter={StaticResource NonEmptyListToVisibilityConverter}}"
+                          CanUserAddRows="False" CanUserSortColumns="True" CanUserDeleteRows="False" IsReadOnly="True" Margin="20,10,0,5" BorderBrush="Gray" BorderThickness="1"
+                          Name="ChangesGrid"
+                          Tag="{Binding Path=DataContext, RelativeSource={RelativeSource AncestorType=UserControl}}">
+                    <DataGrid.ContextMenu>
+                        <ContextMenu Tag="{Binding PlacementTarget.Tag,RelativeSource={RelativeSource Self}}">
+                            <MenuItem Header="Diff to previous version in target branch"
+                                      Command="{Binding DiffToPreviousTargetCommand}" 
+                                      CommandParameter="{Binding PlacementTarget.SelectedItem, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ContextMenu}}}" />
+                            <MenuItem Header="Diff to previous version in source branch"
+                                      Command="{Binding DiffToPreviousSourceCommand}" 
+                                      CommandParameter="{Binding PlacementTarget.SelectedItem, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ContextMenu}}}" />
+                            <MenuItem Header="Diff source version to target version"
+                                      Command="{Binding DiffSourceToTargetCommand}" 
+                                      CommandParameter="{Binding PlacementTarget.SelectedItem, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ContextMenu}}}" />
+                        </ContextMenu>
+                    </DataGrid.ContextMenu>
+                    <DataGrid.Columns>
+                        <DataGridTemplateColumn Header="File" SortMemberPath="Change.ServerPath" Width="*" MinWidth="200">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Path=Change.ServerPath}">
+                                        <TextBlock.ToolTip>
+                                            <TextBlock Text="{Binding Path=Change.ServerPath}"/>
+                                        </TextBlock.ToolTip>
+                                    </TextBlock>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTemplateColumn Header="Edit?" SortMemberPath="IsEdit" Width="60">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Visibility="{Binding IsEdit, Converter={StaticResource BooleanToVisibilityConverter}}">
+                                        Yes
+                                        </TextBlock>
+                                        <TextBlock Visibility="{Binding IsEdit, Converter={StaticResource BooleanToInvisibilityConverter}}">
+                                        No
+                                        </TextBlock>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTemplateColumn Header="Delete?" SortMemberPath="IsDelete" Width="60">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Visibility="{Binding IsDelete, Converter={StaticResource BooleanToVisibilityConverter}}">
+                                        Yes
+                                        </TextBlock>
+                                        <TextBlock Visibility="{Binding IsDelete, Converter={StaticResource BooleanToInvisibilityConverter}}">
+                                        No
+                                        </TextBlock>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTemplateColumn Header="Add?" SortMemberPath="IsAdd" Width="60">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Visibility="{Binding IsAdd, Converter={StaticResource BooleanToVisibilityConverter}}">
+                                        Yes
+                                        </TextBlock>
+                                        <TextBlock Visibility="{Binding IsAdd, Converter={StaticResource BooleanToInvisibilityConverter}}">
+                                        No
+                                        </TextBlock>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTemplateColumn Header="Conflict" SortMemberPath="HasConflict" Width="Auto" MinWidth="150" MaxWidth="250">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Vertical">
+                                        <Expander Header="Conflicts" Visibility="{Binding Path=HasConflict, Converter={StaticResource BooleanToVisibilityConverter}}">
+                                            <TextBlock TextWrapping="Wrap" Text="{Binding Path=Conflict.Message}" />
+                                            <HeaderedContentControl.Background>
+                                                <SolidColorBrush Color="#FFA90E00" />
+                                            </HeaderedContentControl.Background>
+                                            <Expander.ToolTip>
+                                                <ToolTip Content="{Binding Path=Conflict.Message}" />
+                                            </Expander.ToolTip>
+                                        </Expander>
+                                        <Expander Header="No Conflict" Visibility="{Binding Path=HasNoConflict, Converter={StaticResource BooleanToVisibilityConverter}}" IsEnabled="False" />
+                                    </StackPanel>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+                <Separator Margin="0,0,0,10" />
+                <TextBlock FontWeight="Bold" Margin="0,0,0,5">
+                    Check in comment
+                </TextBlock>
+                <TextBox BorderThickness="1" Height="150" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Visible" Margin="20,0,0,0" Text="{Binding Path=CheckInComment}" />
+            </StackPanel>
+        </ScrollViewer>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Grid.Row="1" Margin="3,10,3,3">
+            <Button IsDefault="True" Command="{Binding Path=CheckInCommand}" Margin="3">Check in</Button>
+            <Button IsCancel="True" Command="{Binding Path=CancelCommand}" Margin="3">Cancel</Button>
+        </StackPanel>
+    </Grid>
+</UserControl>

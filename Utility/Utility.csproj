@@ -1,0 +1,196 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{9D7CA5E3-232A-400A-A0FE-0750754C99A3}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>qbusSRL.Utility</RootNamespace>
+    <AssemblyName>Utility</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>Key.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>CODE_ANALYSIS;DEBUG;TRACE</DefineConstants>
+    <DocumentationFile>Utility.XML</DocumentationFile>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>ExtendedCorrectnessRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="MahApps.Metro">
+      <HintPath>..\dlls\MahApps.Metro.dll</HintPath>
+    </Reference>
+    <Reference Include="MahApps.Metro.Resources">
+      <HintPath>..\dlls\MahApps.Metro.Resources.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualStudio.Shell.12.0, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.WindowsAPICodePack">
+      <HintPath>..\dlls\Microsoft.WindowsAPICodePack.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAPICodePack.Shell">
+      <HintPath>..\dlls\Microsoft.WindowsAPICodePack.Shell.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAPICodePack.ShellExtensions">
+      <HintPath>..\dlls\Microsoft.WindowsAPICodePack.ShellExtensions.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.WebRequest" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Commands\CommandBehavior.cs" />
+    <Compile Include="Commands\RelayCommand.cs" />
+    <Compile Include="GlobalSuppressions.cs" />
+    <Compile Include="Helpers\Atomic\AtomicMutable.cs" />
+    <Compile Include="Helpers\Converters\BooleanToBrushConverter.cs" />
+    <Compile Include="Helpers\Converters\BooleanToFontWeightConverter.cs" />
+    <Compile Include="Helpers\Converters\BooleanToVisibilityConverter.cs" />
+    <Compile Include="Helpers\Converters\DebuggingConverter.cs" />
+    <Compile Include="Helpers\Converters\EmptyListToVisibilityConverter.cs" />
+    <Compile Include="Helpers\Converters\IsEqualToConverter.cs" />
+    <Compile Include="Helpers\Converters\IsNotNullConverter.cs" />
+    <Compile Include="Helpers\Converters\IsNotNullToVisibilityConverter.cs" />
+    <Compile Include="Helpers\Converters\IsNullConverter.cs" />
+    <Compile Include="Helpers\Converters\IsNullToVisibilityConverter.cs" />
+    <Compile Include="Helpers\Converters\NonEmptyListToVisibilityConverter.cs" />
+    <Compile Include="Helpers\Converters\NoOpConverter.cs" />
+    <Compile Include="Helpers\Converters\StringToSingleLineConverter.cs" />
+    <Compile Include="Helpers\Collections\FilteredReadOnlyObservableCollection.cs" />
+    <Compile Include="Helpers\Escaping\OnlyASCIICharacters.cs" />
+    <Compile Include="Helpers\ExtensionMethods\StringExtensions.cs" />
+    <Compile Include="Helpers\ExtensionMethods\TypeExtensions.cs" />
+    <Compile Include="Helpers\InOrderSetter\SetInOrder.cs" />
+    <Compile Include="Helpers\Logging\SimpleLogger.cs" />
+    <Compile Include="Helpers\Messenger\Messenger.cs" />
+    <Compile Include="Helpers\Messenger\OpenLogMessage.cs" />
+    <Compile Include="Helpers\NotifyPropertyChanged\NotifyPropertyChangedImpl.cs" />
+    <Compile Include="Helpers\ViewModel\BaseViewModel.cs" />
+    <Compile Include="Helpers\ViewModel\MessageBoxViewModel.cs" />
+    <Compile Include="Helpers\WeakReference\WeakReferenceCollection.cs" />
+    <Compile Include="Helpers\WeakReference\WeakReferenceEventHandler.cs" />
+    <Compile Include="Helpers\WeakReference\WeakReferenceWithMetaDataCollection.cs" />
+    <Compile Include="Helpers\WPFBindings\DependencyObjectHelper.cs" />
+    <Compile Include="Managers\Background\BackgroundTask.cs" />
+    <Compile Include="Managers\Background\BackgroundTaskManager.cs" />
+    <Compile Include="Managers\Background\ITrackProgress.cs" />
+    <Compile Include="Managers\Background\ProgressData.cs" />
+    <Compile Include="Managers\Background\TrackProgressParameters.cs" />
+    <Compile Include="Managers\View\AbstractView.cs" />
+    <Compile Include="Managers\View\AssociatedViewModelAttribute.cs" />
+    <Compile Include="Managers\View\ViewManager.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SerializationHelpers\BinaryStructSerializer.cs" />
+    <Compile Include="SerializationHelpers\RegisterForSerializationAttribute.cs" />
+    <Compile Include="SerializationHelpers\RegisterForSerializationExplicit.cs" />
+    <Compile Include="SerializationHelpers\SerializableDictionary.cs" />
+    <Compile Include="SerializationHelpers\Serializer.cs" />
+    <Compile Include="SerializationHelpers\ViewSettingsSerializer.cs" />
+    <Compile Include="UserControls\FieldMapperGrid\Control\CustomBoundColumn.cs" />
+    <Compile Include="UserControls\FieldMapperGrid\Control\StripFieldExposerConverter.cs" />
+    <Compile Include="UserControls\FieldMapperGrid\Control\FieldMapperGridControl.xaml.cs" />
+    <Compile Include="UserControls\FieldMapperGrid\Control\FieldMapperGridViewConverter.cs" />
+    <Compile Include="UserControls\FieldMapperGrid\FieldExposer.cs" />
+    <Compile Include="UserControls\FieldMapperGrid\FieldMapperGridColumn.cs" />
+    <Compile Include="UserControls\FieldMapperGrid\FieldMapperGridViewModel.cs" />
+    <Compile Include="UserControls\FieldMapperGrid\IFieldExposer.cs" />
+    <Compile Include="UserControls\FieldMapperGrid\IFieldMapperGridViewModel.cs" />
+    <Compile Include="UserControls\FieldMapperGrid\IPropertyAccessor.cs" />
+    <Compile Include="UserControls\LoadingProgress\Control\LoadingAnimation.xaml.cs">
+      <DependentUpon>LoadingAnimation.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\LoadingProgress\Control\LoadingProgressControl.xaml.cs">
+      <DependentUpon>LoadingProgressControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\LoadingProgress\LoadingProgressViewModel.cs" />
+    <Compile Include="Windows\MessageBoxView.xaml.cs">
+      <DependentUpon>MessageBoxView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\WaitForBackgroundActionDialog.xaml.cs">
+      <DependentUpon>WaitForBackgroundActionDialog.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Key.snk" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="UserControls\FieldMapperGrid\Control\FieldMapperGridControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserControls\LoadingProgress\Control\LoadingAnimation.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\LoadingProgress\Control\LoadingProgressControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\MessageBoxView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\WaitForBackgroundActionDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

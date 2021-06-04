@@ -1,0 +1,24 @@
+<VsctGenerator>
+  <Data vsctTemplatePath=".\vMerge.vsctTemplate" vsctTemplateXml=".\commands.xml" vsctPath="..\vMerge.vsct" guidResult=".." />
+  <Guids>
+    <Guid name="guidRoot" value="{f1eddb03-6829-4ef2-a1fc-732da749d179}" />
+    <Guid name="guidRootVMergeContextMenu" value="{09b4304c-0347-4ab2-819d-9e4c9cad445c}" />
+    <Guid name="guidRootTools" value="{f15bc0ff-40a7-4972-88ab-49930de605b3}" />
+    <Guid name="guidToolsVMergeContextMenu" value="{241d0cd0-fd34-421b-98a0-c1687084df65}" />
+    <Guid name="ToolsMenu" value="{ed8b0c70-223d-470f-a44e-03ac40e35539}" />
+    <Guid name="guidRootSourceControlExplorerContext" value="{4fb87b9b-7cf1-49e4-b179-400a3f98606b}" />
+    <Guid name="MergeContextMenu" value="{2d82c516-22ad-4079-b8e7-9c1444637413}" />
+    <Guid name="MergeContextMenu1" value="{5a080475-d5f9-4c8f-8fa5-a0f773667b4b}" />
+    <Guid name="OContextMenu" value="{46ce87b4-3178-4a80-bdf1-35821ccab74d}" />
+    <Guid name="OpeContextMenu" value="{e1b7919d-e39d-4085-95a1-cf58ee6bcedd}" />
+    <Guid name="OpenContextMenu" value="{0765238c-f228-415d-95d9-f46a6fb586d6}" />
+    <Guid name="OpenCContextMenu" value="{5e8a5139-849b-47c7-98f8-213a725866aa}" />
+    <Guid name="OpenChangeContextMenu" value="{5f82f6ce-3c22-4154-9439-bee9428d88c9}" />
+    <Guid name="OpenChangesContextMenu" value="{5df73287-3fca-496d-b6e8-382d329af857}" />
+    <Guid name="OpenChangesetContextMenu" value="{d09f1893-9155-49c7-a232-a4021ae058d4}" />
+    <Guid name="OpenChangesetVContextMenu" value="{2156c705-eb53-47e9-b77e-a0e8939ea4ab}" />
+    <Guid name="OpenChangesetViContextMenu" value="{ff957ece-8ce4-4399-971d-e98f6ec649fb}" />
+    <Guid name="OpenChangesetViewContextMenu" value="{8005553e-bbc2-4241-94b3-8fd67aca4d12}" />
+    <Guid name="guidRootHelp" value="{792dc125-3e73-451c-bb3e-8712ebb7d04b}" />
+  </Guids>
+</VsctGenerator>

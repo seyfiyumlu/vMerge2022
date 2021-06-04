@@ -1,0 +1,45 @@
+﻿<ui1:DialogWindow  xmlns:ui1="clr-namespace:Microsoft.VisualStudio.PlatformUI;assembly=Microsoft.VisualStudio.Shell.15.0" x:Class="alexbegh.vMerge.View.Dialog.ViewProfileDialogWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:ui="clr-namespace:Microsoft.VisualStudio.PlatformUI;assembly=Microsoft.VisualStudio.Shell.12.0"
+        xmlns:uc="clr-namespace:alexbegh.vMerge.View.Controls"
+        Title="vMerge - View Profile" Height="415" Width="532"
+        ShowActivated="True" ShowInTaskbar="False" WindowStartupLocation="CenterOwner" HasMaximizeButton="False">
+    <ui1:DialogWindow.Resources>
+        <ResourceDictionary Source="..\..\MainResources.xaml" />
+    </ui1:DialogWindow.Resources>
+    <Grid Margin="5,5,5,5">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Row="0" FontWeight="SemiBold">
+            Profile connection parameters:
+        </TextBlock>
+        <Grid Grid.Row="1" Margin="10,0,0,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <TextBlock Grid.Row="0" Grid.Column="0">TFS URI:</TextBlock>
+            <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding Path=TfsUri}" />
+            <TextBlock Grid.Row="1" Grid.Column="0">TFS Project:</TextBlock>
+            <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding Path=TfsProject}" />
+        </Grid>
+        <TextBlock Grid.Row="2" Margin="0,10,0,0" FontWeight="SemiBold">Summary of settings:</TextBlock>
+        <Border Grid.Row="3" BorderBrush="Black" BorderThickness="1" Margin="10,5,0,0">
+            <uc:ShowProfileSettingsControl />
+        </Border>
+        <StackPanel Grid.Row="5" Orientation="Horizontal" HorizontalAlignment="Right" Margin="3,10,3,3">
+            <Button IsDefault="True" Command="{Binding Path=OKCommand}" Margin="3">OK</Button>
+        </StackPanel>
+    </Grid>
+</ui1:DialogWindow>

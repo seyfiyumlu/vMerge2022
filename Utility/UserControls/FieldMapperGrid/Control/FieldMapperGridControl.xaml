@@ -1,0 +1,31 @@
+﻿<UserControl x:Class="alexbegh.Utility.UserControls.FieldMapperGrid.Control.FieldMapperGridControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:FieldMapperGridControl="clr-namespace:alexbegh.Utility.UserControls.FieldMapperGrid.Control"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <UserControl.Resources>
+        <FieldMapperGridControl:FieldMapperGridViewConverter x:Key="FieldMapperGridViewConverter">
+        </FieldMapperGridControl:FieldMapperGridViewConverter>
+        <Style TargetType="{x:Type DataGridCell}">
+            <Setter Property="VerticalContentAlignment">
+                <Setter.Value>
+                    Top
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Resources>
+    <ContentControl x:Name="FieldMapperContentControl" Content="{Binding Path=ItemsSource, RelativeSource={RelativeSource AncestorType=FieldMapperGridControl:FieldMapperGridControl}, Converter={StaticResource FieldMapperGridViewConverter}}">
+        <!--<ContentControl.ContextMenu>
+            <ContextMenu ItemsSource="{Binding Path=Columns}">
+                <ContextMenu.ItemTemplate>
+                    <DataTemplate>
+                        <MenuItem Header="{Binding Path=Header}" IsCheckable="True" IsChecked="{Binding Path=Visible}"/>
+                    </DataTemplate>
+                </ContextMenu.ItemTemplate>
+            </ContextMenu>
+        </ContentControl.ContextMenu>-->
+    </ContentControl>
+</UserControl>

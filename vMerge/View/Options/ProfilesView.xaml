@@ -1,0 +1,71 @@
+﻿<UserControl x:Class="alexbegh.vMerge.View.Options.ProfilesView"
+             xmlns:gl="clr-namespace:System.Globalization;assembly=mscorlib"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <UserControl.Resources>
+        <ResourceDictionary Source="..\..\MainResources.xaml" />
+    </UserControl.Resources>
+    <Grid>
+        <ScrollViewer>
+            <StackPanel Orientation="Vertical">
+                <TextBlock TextWrapping="WrapWithOverflow" Visibility="{Binding HasProfiles, Converter={StaticResource BooleanToInvisibilityConverter}}">
+                    No merge profiles have been created yet.<LineBreak/><LineBreak/>
+                    Create profiles by opening Tools/vMerge/Show changeset view and after choosing a merge profile click the "Save Merge Profile" button.
+                </TextBlock>
+                <DataGrid Margin="10,0,0,0" Name="profilesGrid"
+                  CanUserAddRows="False" ItemsSource="{Binding Path=Profiles}" AutoGenerateColumns="False"
+                  CanUserDeleteRows="False" CanUserReorderColumns="False"
+                  CanUserSortColumns="False"
+                  IsReadOnly="True"
+                  MinHeight="200"
+                  BorderBrush="Black" BorderThickness="1"
+                  Visibility="{Binding HasProfiles, Converter={StaticResource BooleanToVisibilityConverter}}"> 
+                    <DataGrid.Columns>
+                        <DataGridTemplateColumn Header="Team project" SortMemberPath="TeamProjectFriendlyName" Width="Auto" SortDirection="Ascending">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock>
+                                        <TextBlock Text="{Binding Path=TeamProjectFriendlyName, Converter={StaticResource StringToSingleLineConverter}}" 
+                                            TextWrapping="NoWrap"
+                                            TextTrimming="CharacterEllipsis"/>
+                                    </TextBlock>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTemplateColumn Header="Profile Name" SortMemberPath="Name" Width="*" SortDirection="Ascending">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Path=Name, Converter={StaticResource StringToSingleLineConverter}}" 
+                                               TextWrapping="NoWrap"
+                                               TextTrimming="CharacterEllipsis"/>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTemplateColumn Header="Actions" Width="Auto">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Margin="0,0,5,0">
+                                            <Hyperlink Command="{Binding Path=DataContext.ViewProfileCommand, RelativeSource={RelativeSource FindAncestor, AncestorType=UserControl}}" CommandParameter="{Binding Path=.}">
+                                                <TextBlock Text="View" />
+                                            </Hyperlink>
+                                        </TextBlock>
+                                        <TextBlock Margin="0,0,5,0">
+                                            <Hyperlink Command="{Binding Path=DataContext.DeleteProfileCommand, RelativeSource={RelativeSource FindAncestor, AncestorType=UserControl}}" CommandParameter="{Binding Path=.}">
+                                                <TextBlock Text="Delete" />
+                                            </Hyperlink>
+                                        </TextBlock>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</UserControl>

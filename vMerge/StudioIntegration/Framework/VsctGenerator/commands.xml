@@ -1,0 +1,30 @@
+<Vsct>
+  <namespace>alexbegh.vMerge.StudioIntegration.Framework</namespace>
+  
+  <group name="Tools" attachToGuid="guidSHLMainMenu" attachToId="IDM_VS_MENU_TOOLS">
+    <menu id="ToolsMenu" caption="&amp;vMerge">
+      <combo id="SwitchToSettings" caption="Active merge profile:" defaultWidth="200"/>
+      <group>
+        <button id="ShowWorkItemView" caption="Show work item view" />
+        <button id="ShowChangesetView" caption="Show changeset view" />
+      </group>
+    </menu>
+  </group>
+
+  <group name="Help" attachToGuid="guidSHLMainMenu" attachToId="IDM_VS_MENU_HELP">
+    <button id="ShowVMergeHelp" caption="&amp;vMerge Help" />
+  </group>
+
+  <group name="SourceControlExplorerContext" attachToGuid="BranchMergeMenuGuid" attachToId="BM">
+    <menu id="MergeContextMenu" caption="Merge with &amp;vMerge">
+      <dynamicbutton id="TargetBranch" caption="No branches available" maxitems="50" />
+      <group>
+        <dynamicbutton id="MatchingProfiles" caption="No profiles yet" maxitems="50" />
+      </group>
+      <button id="RefreshBranches" caption="Refresh branch list" />
+    </menu>
+    <menu id="OpenChangesetViewContextMenu" caption="O&amp;pen in vMerge changeset view">
+      <dynamicbutton id="TargetBranch2" caption="No branches available" maxitems="50" />
+    </menu>
+  </group>
+</Vsct>

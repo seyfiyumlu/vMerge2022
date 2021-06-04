@@ -1,0 +1,32 @@
+﻿<ui:DialogWindow x:Class="alexbegh.Utility.Windows.WaitForBackgroundActionDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:LoadingProgress="clr-namespace:alexbegh.Utility.UserControls.LoadingProgress.Control;assembly=Utility"
+        xmlns:ui="clr-namespace:Microsoft.VisualStudio.PlatformUI;assembly=Microsoft.VisualStudio.Shell.12.0"
+        Background="{DynamicResource VsBrush.Window}"
+        Foreground="{DynamicResource VsBrush.WindowText}"
+        xmlns:MetroControls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        SizeToContent="Height" Height="Auto"
+        Width="300" ShowInTaskbar="False" ResizeMode="NoResize" WindowStyle="None" BorderBrush="Beige" BorderThickness="2">
+    <Window.Resources>
+    </Window.Resources>
+    <Grid Margin="6">
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Row="0" Name="Description" TextWrapping="WrapWithOverflow">Please wait until the current action completes ...</TextBlock>
+        <ProgressBar Name="PB" Grid.Row="1" Height="20" Margin="5" IsIndeterminate="True">
+            <ProgressBar.Resources>
+                <Style TargetType="{x:Type ProgressBar}" />
+            </ProgressBar.Resources>
+        </ProgressBar>
+        <TextBlock Grid.Row="1" Name="Text" VerticalAlignment="Center" HorizontalAlignment="Center" />
+        <TextBlock Grid.Row="2" Name="Percent" VerticalAlignment="Center" HorizontalAlignment="Center" Visibility="Collapsed"/>
+        <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button Name="CancelButton" IsCancel="True" Padding="2,0,2,0" Click="CancelClicked">Cancel</Button>
+        </StackPanel>
+    </Grid>
+</ui:DialogWindow>

@@ -1,0 +1,82 @@
+﻿<ui1:DialogWindow  xmlns:ui1="clr-namespace:Microsoft.VisualStudio.PlatformUI;assembly=Microsoft.VisualStudio.Shell.15.0" x:Class="alexbegh.vMerge.View.Dialog.ConfigureColumnsAndSortOrderDialogWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:ui="clr-namespace:Microsoft.VisualStudio.PlatformUI;assembly=Microsoft.VisualStudio.Shell.12.0"
+        Icon="/vMerge;component/Resources/vMerge_small_16.png"
+        Background="{DynamicResource VsBrush.Window}"
+        Foreground="{DynamicResource VsBrush.WindowText}"
+        Height="300" Width="500" HasMaximizeButton="True" HasMinimizeButton="False" ShowInTaskbar="False" WindowStartupLocation="CenterOwner">
+    <ui1:DialogWindow.Resources>
+        <ResourceDictionary Source="..\..\MainResources.xaml" />
+    </ui1:DialogWindow.Resources>
+    <ui1:DialogWindow.Title>
+        <MultiBinding StringFormat="vMerge: Configure {0} View">
+            <Binding Path="ConfigurationName" />
+        </MultiBinding>
+    </ui1:DialogWindow.Title>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <TextBlock Margin="10,0,0,0" Grid.Row="0" Grid.Column="0" FontWeight="Bold">
+            Availabe columns:
+        </TextBlock>
+        <TextBlock Margin="10,0,0,0" Grid.Row="0" Grid.Column="1" FontWeight="Bold">
+            Selected columns:
+        </TextBlock>
+        <TextBlock Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" FontWeight="Light" HorizontalAlignment="Center">
+            Drag &amp; Drop columns to rearrange
+        </TextBlock>
+        <ListBox Name="AvailableItemsListBox" 
+                 MouseMove="SelectedItemsListBox_MouseMove"
+                 PreviewMouseLeftButtonDown="SelectedItemsListBox_PreviewMouseLeftButtonDown"
+                 DragOver="SelectedItemsListBox_DragOver"
+                 Drop="SelectedItemsListBox_Drop"
+                 ScrollViewer.CanContentScroll="False"
+                 AllowDrop="True"
+                 Margin="10,5,5,10" Grid.Row="2" Grid.Column="0" ItemsSource="{Binding AvailableColumns}" SelectedItem="{Binding AvailableColumn}" BorderThickness="1">
+            <ListBox.ItemContainerStyle>
+                <Style TargetType="{x:Type ListBoxItem}">
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Header}" Value="IsSelected">
+                            <Setter Property="Visibility" Value="Collapsed"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </ListBox.ItemContainerStyle>
+            <ListBox.ItemTemplate>
+                <ItemContainerTemplate>
+                    <TextBlock Text="{Binding Header}" FontWeight="{Binding Visible, Converter={StaticResource BooleanToFontWeightConverter}, ConverterParameter=Bold;Normal}" />
+                </ItemContainerTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <ListBox Name="SelectedItemsListBox" 
+                 MouseMove="SelectedItemsListBox_MouseMove"
+                 PreviewMouseLeftButtonDown="SelectedItemsListBox_PreviewMouseLeftButtonDown"
+                 DragOver="SelectedItemsListBox_DragOver"
+                 Drop="SelectedItemsListBox_Drop"
+                 ScrollViewer.CanContentScroll="False"
+                 AllowDrop="True"
+                 Margin="10,5,5,10" Grid.Row="2" Grid.Column="1" ItemsSource="{Binding SelectedColumns}" SelectedItem="{Binding SelectedColumn}" DisplayMemberPath="Header"  BorderThickness="1">
+            <ListBox.ItemContainerStyle>
+                <Style TargetType="{x:Type ListBoxItem}">
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Header}" Value="IsSelected">
+                            <Setter Property="Visibility" Value="Collapsed"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </ListBox.ItemContainerStyle>
+        </ListBox>
+        <WrapPanel Orientation="Horizontal" HorizontalAlignment="Right" Grid.Row="3" Grid.Column="1">
+            <Button Padding="15,3,15,3" Margin="3,3,5,10" IsDefault="True" IsCancel="True" Command="{Binding OKCommand}">Close</Button>
+        </WrapPanel>
+    </Grid>
+</ui1:DialogWindow>

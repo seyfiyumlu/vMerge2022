@@ -1,0 +1,573 @@
+﻿<UserControl x:Class="alexbegh.Utility.UserControls.LoadingProgress.Control.LoadingAnimation"
+ xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+ xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+ xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+ mc:Ignorable="d"
+ IsHitTestVisible="False"
+>
+    <UserControl.Resources>
+
+        <!-- A block in the progress ring (why does this trapezoid have a dozen corners?) -->
+        <Geometry x:Key="Block">
+            M291.15499,85.897525
+                        C291.15499,85.897525
+                         301.88917,85.87921
+                         301.88917,85.87921
+                         301.88917,85.87921
+                         300.38339,94.355061
+                         300.38339,94.355061
+                         300.38339,94.355061
+                         292.85366,94.355042
+                         292.85366,94.355042
+                         292.85366,94.355042
+                         291.15499,85.897525
+                         291.15499,85.897525
+                        Z
+        </Geometry>
+
+        <!-- Animations for the individual blocks of the progress ring -->
+        <Storyboard x:Key="ProgressAnimation" RepeatBehavior="Forever">
+
+            <ColorAnimationUsingKeyFrames Duration="00:00:03.6" Storyboard.TargetName="block0" Storyboard.TargetProperty="(UIElement.OpacityMask).(SolidColorBrush.Color)">
+                <LinearColorKeyFrame KeyTime="00:00:00.0" Value="#FF000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:00.2" Value="#EF000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:00.4" Value="#E2000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:00.6" Value="#D3000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:00.8" Value="#C6000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:01.0" Value="#B7000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:01.2" Value="#AA000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:01.4" Value="#9B000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:01.6" Value="#8E000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:01.8" Value="#7F000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:02.0" Value="#72000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:02.2" Value="#63000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:02.4" Value="#56000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:02.6" Value="#3D000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:02.8" Value="#26000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:03.0" Value="#19000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:03.2" Value="#0C000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:03.4" Value="#00000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:03.6" Value="#FF000000"/>
+            </ColorAnimationUsingKeyFrames>
+
+            <ColorAnimationUsingKeyFrames Duration="00:00:03.6" Storyboard.TargetName="block1" Storyboard.TargetProperty="(UIElement.OpacityMask).(SolidColorBrush.Color)">
+                <LinearColorKeyFrame KeyTime="00:00:00.0" Value="#00000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:00.2" Value="#FF000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:00.4" Value="#EF000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:00.6" Value="#E2000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:00.8" Value="#D3000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:01.0" Value="#C6000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:01.2" Value="#B7000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:01.4" Value="#AA000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:01.6" Value="#9B000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:01.8" Value="#8E000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:02.0" Value="#7F000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:02.2" Value="#72000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:02.4" Value="#63000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:02.6" Value="#56000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:02.8" Value="#3D000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:03.0" Value="#26000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:03.2" Value="#19000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:03.4" Value="#0C000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:03.6" Value="#00000000"/>
+            </ColorAnimationUsingKeyFrames>
+
+            <ColorAnimationUsingKeyFrames Duration="00:00:03.6" Storyboard.TargetName="block2" Storyboard.TargetProperty="(UIElement.OpacityMask).(SolidColorBrush.Color)">
+                <LinearColorKeyFrame KeyTime="00:00:00.0" Value="#0C000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:00.2" Value="#00000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:00.4" Value="#FF000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:00.6" Value="#EF000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:00.8" Value="#E2000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:01.0" Value="#D3000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:01.2" Value="#C6000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:01.4" Value="#B7000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:01.6" Value="#AA000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:01.8" Value="#9B000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:02.0" Value="#91000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:02.2" Value="#7F000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:02.4" Value="#72000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:02.6" Value="#63000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:02.8" Value="#56000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:03.0" Value="#3D000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:03.2" Value="#26000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:03.4" Value="#19000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:03.6" Value="#0C000000"/>
+            </ColorAnimationUsingKeyFrames>
+
+            <ColorAnimationUsingKeyFrames Duration="00:00:03.6" Storyboard.TargetName="block3" Storyboard.TargetProperty="(UIElement.OpacityMask).(SolidColorBrush.Color)">
+                <LinearColorKeyFrame KeyTime="00:00:00.0" Value="#19000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:00.2" Value="#0C000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:00.4" Value="#00000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:00.6" Value="#FF000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:00.8" Value="#EF000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:01.0" Value="#E2000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:01.2" Value="#D3000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:01.4" Value="#C6000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:01.6" Value="#B7000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:01.8" Value="#AA000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:02.0" Value="#9B000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:02.2" Value="#91000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:02.4" Value="#7F000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:02.6" Value="#72000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:02.8" Value="#63000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:03.0" Value="#56000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:03.2" Value="#3D000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:03.4" Value="#26000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:03.6" Value="#19000000"/>
+            </ColorAnimationUsingKeyFrames>
+
+            <ColorAnimationUsingKeyFrames Duration="00:00:03.6" Storyboard.TargetName="block4" Storyboard.TargetProperty="(UIElement.OpacityMask).(SolidColorBrush.Color)">
+                <LinearColorKeyFrame KeyTime="00:00:00.0" Value="#26000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:00.2" Value="#19000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:00.4" Value="#0C000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:00.6" Value="#00000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:00.8" Value="#FF000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:01.0" Value="#EF000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:01.2" Value="#E2000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:01.4" Value="#D3000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:01.6" Value="#C6000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:01.8" Value="#B7000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:02.0" Value="#AA000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:02.2" Value="#9B000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:02.4" Value="#91000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:02.6" Value="#7F000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:02.8" Value="#72000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:03.0" Value="#63000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:03.2" Value="#56000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:03.4" Value="#3D000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:03.6" Value="#26000000"/>
+            </ColorAnimationUsingKeyFrames>
+
+            <ColorAnimationUsingKeyFrames Duration="00:00:03.6" Storyboard.TargetName="block5" Storyboard.TargetProperty="(UIElement.OpacityMask).(SolidColorBrush.Color)">
+                <LinearColorKeyFrame KeyTime="00:00:00.0" Value="#3D000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:00.2" Value="#26000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:00.4" Value="#19000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:00.6" Value="#0C000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:00.8" Value="#00000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:01.0" Value="#FF000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:01.2" Value="#EF000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:01.4" Value="#E2000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:01.6" Value="#D3000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:01.8" Value="#C6000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:02.0" Value="#B7000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:02.2" Value="#AA000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:02.4" Value="#9B000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:02.6" Value="#91000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:02.8" Value="#7F000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:03.0" Value="#72000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:03.2" Value="#63000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:03.4" Value="#56000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:03.6" Value="#3D000000"/>
+            </ColorAnimationUsingKeyFrames>
+
+            <ColorAnimationUsingKeyFrames Duration="00:00:03.6" Storyboard.TargetName="block6" Storyboard.TargetProperty="(UIElement.OpacityMask).(SolidColorBrush.Color)">
+                <LinearColorKeyFrame KeyTime="00:00:00.0" Value="#56000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:00.2" Value="#3D000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:00.4" Value="#26000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:00.6" Value="#19000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:00.8" Value="#0C000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:01.0" Value="#00000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:01.2" Value="#FF000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:01.4" Value="#EF000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:01.6" Value="#E2000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:01.8" Value="#D3000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:02.0" Value="#C6000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:02.2" Value="#B7000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:02.4" Value="#AA000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:02.6" Value="#9B000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:02.8" Value="#91000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:03.0" Value="#7F000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:03.2" Value="#72000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:03.4" Value="#63000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:03.6" Value="#56000000"/>
+            </ColorAnimationUsingKeyFrames>
+
+            <ColorAnimationUsingKeyFrames Duration="00:00:03.6" Storyboard.TargetName="block7" Storyboard.TargetProperty="(UIElement.OpacityMask).(SolidColorBrush.Color)">
+                <LinearColorKeyFrame KeyTime="00:00:00.0" Value="#63000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:00.2" Value="#56000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:00.4" Value="#3D000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:00.6" Value="#26000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:00.8" Value="#19000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:01.0" Value="#0C000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:01.2" Value="#00000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:01.4" Value="#FF000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:01.6" Value="#EF000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:01.8" Value="#E2000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:02.0" Value="#D3000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:02.2" Value="#C6000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:02.4" Value="#B7000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:02.6" Value="#AA000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:02.8" Value="#9B000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:03.0" Value="#91000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:03.2" Value="#7F000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:03.4" Value="#72000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:03.6" Value="#63000000"/>
+            </ColorAnimationUsingKeyFrames>
+
+            <ColorAnimationUsingKeyFrames Duration="00:00:03.6" Storyboard.TargetName="block8" Storyboard.TargetProperty="(UIElement.OpacityMask).(SolidColorBrush.Color)">
+                <LinearColorKeyFrame KeyTime="00:00:00.0" Value="#72000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:00.2" Value="#63000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:00.4" Value="#56000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:00.6" Value="#3D000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:00.8" Value="#26000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:01.0" Value="#19000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:01.2" Value="#0C000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:01.4" Value="#00000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:01.6" Value="#FF000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:01.8" Value="#EF000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:02.0" Value="#E2000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:02.2" Value="#D3000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:02.4" Value="#C6000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:02.6" Value="#B7000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:02.8" Value="#AA000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:03.0" Value="#9B000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:03.2" Value="#91000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:03.4" Value="#7F000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:03.6" Value="#72000000"/>
+            </ColorAnimationUsingKeyFrames>
+
+            <ColorAnimationUsingKeyFrames Duration="00:00:03.6" Storyboard.TargetName="block9" Storyboard.TargetProperty="(UIElement.OpacityMask).(SolidColorBrush.Color)">
+                <LinearColorKeyFrame KeyTime="00:00:00.0" Value="#7F000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:00.2" Value="#72000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:00.4" Value="#63000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:00.6" Value="#56000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:00.8" Value="#3D000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:01.0" Value="#26000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:01.2" Value="#19000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:01.4" Value="#0C000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:01.6" Value="#00000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:01.8" Value="#FF000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:02.0" Value="#EF000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:02.2" Value="#E2000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:02.4" Value="#D3000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:02.6" Value="#C6000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:02.8" Value="#B7000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:03.0" Value="#AA000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:03.2" Value="#9B000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:03.4" Value="#91000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:03.6" Value="#7F000000"/>
+            </ColorAnimationUsingKeyFrames>
+
+            <ColorAnimationUsingKeyFrames Duration="00:00:03.6" Storyboard.TargetName="block10" Storyboard.TargetProperty="(UIElement.OpacityMask).(SolidColorBrush.Color)">
+                <LinearColorKeyFrame KeyTime="00:00:00.0" Value="#8E000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:00.2" Value="#7F000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:00.4" Value="#72000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:00.6" Value="#63000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:00.8" Value="#56000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:01.0" Value="#3D000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:01.2" Value="#23000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:01.4" Value="#19000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:01.6" Value="#0C000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:01.8" Value="#00000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:02.0" Value="#FF000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:02.2" Value="#EF000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:02.4" Value="#E2000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:02.6" Value="#D3000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:02.8" Value="#C6000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:03.0" Value="#B7000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:03.2" Value="#AA000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:03.4" Value="#9B000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:03.6" Value="#8E000000"/>
+            </ColorAnimationUsingKeyFrames>
+
+            <ColorAnimationUsingKeyFrames Duration="00:00:03.6" Storyboard.TargetName="block11" Storyboard.TargetProperty="(UIElement.OpacityMask).(SolidColorBrush.Color)">
+                <LinearColorKeyFrame KeyTime="00:00:00.0" Value="#9B000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:00.2" Value="#8E000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:00.4" Value="#7F000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:00.6" Value="#72000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:00.8" Value="#63000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:01.0" Value="#56000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:01.2" Value="#3D000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:01.4" Value="#26000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:01.6" Value="#19000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:01.8" Value="#0C000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:02.0" Value="#00000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:02.2" Value="#FF000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:02.4" Value="#EF000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:02.6" Value="#E2000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:02.8" Value="#D3000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:03.0" Value="#C6000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:03.2" Value="#B7000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:03.4" Value="#AA000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:03.6" Value="#9B000000"/>
+            </ColorAnimationUsingKeyFrames>
+
+            <ColorAnimationUsingKeyFrames Duration="00:00:03.6" Storyboard.TargetName="block12" Storyboard.TargetProperty="(UIElement.OpacityMask).(SolidColorBrush.Color)">
+                <LinearColorKeyFrame KeyTime="00:00:00.0" Value="#AA000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:00.2" Value="#9B000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:00.4" Value="#8E000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:00.6" Value="#7F000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:00.8" Value="#72000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:01.0" Value="#63000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:01.2" Value="#56000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:01.4" Value="#3D000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:01.6" Value="#26000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:01.8" Value="#19000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:02.0" Value="#0C000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:02.2" Value="#00000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:02.4" Value="#FF000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:02.6" Value="#EF000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:02.8" Value="#E2000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:03.0" Value="#D3000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:03.2" Value="#C6000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:03.4" Value="#B7000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:03.6" Value="#AA000000"/>
+            </ColorAnimationUsingKeyFrames>
+
+            <ColorAnimationUsingKeyFrames Duration="00:00:03.6" Storyboard.TargetName="block13" Storyboard.TargetProperty="(UIElement.OpacityMask).(SolidColorBrush.Color)">
+                <LinearColorKeyFrame KeyTime="00:00:00.0" Value="#B7000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:00.2" Value="#AA000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:00.4" Value="#9B000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:00.6" Value="#8E000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:00.8" Value="#7F000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:01.0" Value="#72000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:01.2" Value="#63000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:01.4" Value="#56000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:01.6" Value="#3D000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:01.8" Value="#26000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:02.0" Value="#19000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:02.2" Value="#0C000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:02.4" Value="#00000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:02.6" Value="#FF000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:02.8" Value="#EF000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:03.0" Value="#E2000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:03.2" Value="#D3000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:03.4" Value="#C6000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:03.6" Value="#B7000000"/>
+            </ColorAnimationUsingKeyFrames>
+
+            <ColorAnimationUsingKeyFrames Duration="00:00:03.6" Storyboard.TargetName="block14" Storyboard.TargetProperty="(UIElement.OpacityMask).(SolidColorBrush.Color)">
+                <LinearColorKeyFrame KeyTime="00:00:00.0" Value="#C6000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:00.2" Value="#B7000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:00.4" Value="#AA000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:00.6" Value="#9B000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:00.8" Value="#8E000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:01.0" Value="#7F000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:01.2" Value="#72000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:01.4" Value="#63000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:01.6" Value="#56000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:01.8" Value="#3D000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:02.0" Value="#26000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:02.2" Value="#19000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:02.4" Value="#0C000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:02.6" Value="#00000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:02.8" Value="#FF000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:03.0" Value="#EF000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:03.2" Value="#E2000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:03.4" Value="#D3000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:03.6" Value="#C6000000"/>
+            </ColorAnimationUsingKeyFrames>
+
+            <ColorAnimationUsingKeyFrames Duration="00:00:03.6" Storyboard.TargetName="block15" Storyboard.TargetProperty="(UIElement.OpacityMask).(SolidColorBrush.Color)">
+                <LinearColorKeyFrame KeyTime="00:00:00.0" Value="#D3000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:00.2" Value="#C6000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:00.4" Value="#B7000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:00.6" Value="#AA000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:00.8" Value="#9B000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:01.0" Value="#8E000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:01.2" Value="#7F000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:01.4" Value="#72000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:01.6" Value="#63000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:01.8" Value="#56000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:02.0" Value="#3D000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:02.2" Value="#26000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:02.4" Value="#19000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:02.6" Value="#0C000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:02.8" Value="#00000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:03.0" Value="#FF000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:03.2" Value="#EF000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:03.4" Value="#E2000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:03.6" Value="#D3000000"/>
+            </ColorAnimationUsingKeyFrames>
+
+            <ColorAnimationUsingKeyFrames Duration="00:00:03.6" Storyboard.TargetName="block16" Storyboard.TargetProperty="(UIElement.OpacityMask).(SolidColorBrush.Color)">
+                <LinearColorKeyFrame KeyTime="00:00:00.0" Value="#E2000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:00.2" Value="#D3000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:00.4" Value="#C6000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:00.6" Value="#B7000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:00.8" Value="#AA000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:01.0" Value="#9B000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:01.2" Value="#8E000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:01.4" Value="#7F000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:01.6" Value="#72000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:01.8" Value="#63000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:02.0" Value="#56000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:02.2" Value="#3D000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:02.4" Value="#26000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:02.6" Value="#19000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:02.8" Value="#0C000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:03.0" Value="#00000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:03.2" Value="#FF000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:03.4" Value="#EF000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:03.6" Value="#E2000000"/>
+            </ColorAnimationUsingKeyFrames>
+
+            <ColorAnimationUsingKeyFrames Duration="00:00:03.6" Storyboard.TargetName="block17" Storyboard.TargetProperty="(UIElement.OpacityMask).(SolidColorBrush.Color)">
+                <LinearColorKeyFrame KeyTime="00:00:00.0" Value="#EF000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:00.2" Value="#E2000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:00.4" Value="#D3000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:00.6" Value="#C6000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:00.8" Value="#B7000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:01.0" Value="#AA000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:01.2" Value="#9B000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:01.4" Value="#8E000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:01.6" Value="#7F000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:01.8" Value="#72000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:02.0" Value="#63000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:02.2" Value="#56000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:02.4" Value="#3D000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:02.6" Value="#26000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:02.8" Value="#19000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:03.0" Value="#0C000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:03.2" Value="#00000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:03.4" Value="#FF000000"/>
+                <LinearColorKeyFrame KeyTime="00:00:03.6" Value="#EF000000"/>
+            </ColorAnimationUsingKeyFrames>
+
+        </Storyboard>
+
+    </UserControl.Resources>
+
+    <UserControl.Triggers>
+        <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+            <BeginStoryboard
+                                x:Name="ProgressAnimation_BeginStoryboard"
+                                Storyboard="{StaticResource ProgressAnimation}"
+                        />
+        </EventTrigger>
+    </UserControl.Triggers>
+
+    <Canvas x:Name="LayoutRoot" VerticalAlignment="Top" Height="88" Width="88">
+
+        <Grid Width="10.734" Height="10.004" Canvas.Left="38.614" Canvas.Top="0.331">
+
+            <!-- Block 0 -->
+            <Path x:Name="block0" Fill="#FF5482A1" Stretch="Fill" Data="{StaticResource Block}" RenderTransformOrigin="0.5,4.3689" OpacityMask="#00000000" VerticalAlignment="Top" Height="10.004">
+                <Path.RenderTransform>
+                    <RotateTransform Angle="180"/>
+                </Path.RenderTransform>
+            </Path>
+
+            <!-- Block 1 -->
+            <Path x:Name="block1" Fill="#FF5482A1" Stretch="Fill" Data="{StaticResource Block}" RenderTransformOrigin="0.5,4.3689" OpacityMask="#0C000000" VerticalAlignment="Top" Height="10.004">
+                <Path.RenderTransform>
+                    <RotateTransform Angle="-160"/>
+                </Path.RenderTransform>
+            </Path>
+
+            <!-- Block 2 -->
+            <Path x:Name="block2" Fill="#FF5482A1" Stretch="Fill" Data="{StaticResource Block}" RenderTransformOrigin="0.5,4.3689" OpacityMask="#19000000" VerticalAlignment="Top" Height="10.004">
+                <Path.RenderTransform>
+                    <RotateTransform Angle="-140"/>
+                </Path.RenderTransform>
+            </Path>
+
+            <!-- Block 3 -->
+            <Path x:Name="block3" Fill="#FF5482A1" Stretch="Fill" Data="{StaticResource Block}" RenderTransformOrigin="0.5,4.3689" OpacityMask="#26000000" VerticalAlignment="Top" Height="10.004">
+                <Path.RenderTransform>
+                    <RotateTransform Angle="-120"/>
+                </Path.RenderTransform>
+            </Path>
+
+            <!-- Block 4 -->
+            <Path x:Name="block4" Fill="#FF5482A1" Stretch="Fill" Data="{StaticResource Block}" RenderTransformOrigin="0.5,4.3689" OpacityMask="#3D000000" VerticalAlignment="Top" Height="10.004">
+                <Path.RenderTransform>
+                    <RotateTransform Angle="-100"/>
+                </Path.RenderTransform>
+            </Path>
+
+            <!-- Block 5 -->
+            <Path x:Name="block5" Fill="#FF5482A1" Stretch="Fill" Data="{StaticResource Block}" RenderTransformOrigin="0.5,4.3689" OpacityMask="#56000000" VerticalAlignment="Top" Height="10.004">
+                <Path.RenderTransform>
+                    <RotateTransform Angle="-80"/>
+                </Path.RenderTransform>
+            </Path>
+
+            <!-- Block 6 -->
+            <Path x:Name="block6" Fill="#FF5482A1" Stretch="Fill" Data="{StaticResource Block}" RenderTransformOrigin="0.5,4.3689" OpacityMask="#64000000" VerticalAlignment="Top" Height="10.004">
+                <Path.RenderTransform>
+                    <RotateTransform Angle="-60"/>
+                </Path.RenderTransform>
+            </Path>
+
+            <!-- Block 7 -->
+            <Path x:Name="block7" Fill="#FF5482A1" Stretch="Fill" Data="{StaticResource Block}" RenderTransformOrigin="0.5,4.3689" OpacityMask="#72000000" VerticalAlignment="Top" Height="10.004">
+                <Path.RenderTransform>
+                    <RotateTransform Angle="-40"/>
+                </Path.RenderTransform>
+            </Path>
+
+            <!-- Block 8 -->
+            <Path x:Name="block8" Fill="#FF5482A1" Stretch="Fill" Data="{StaticResource Block}" RenderTransformOrigin="0.5,4.3689" OpacityMask="#80000000" VerticalAlignment="Top" Height="10.004">
+                <Path.RenderTransform>
+                    <RotateTransform Angle="-20"/>
+                </Path.RenderTransform>
+            </Path>
+
+            <!-- Block 9 -->
+            <Path x:Name="block9" Fill="#FF5482A1" Stretch="Fill" Data="{StaticResource Block}" OpacityMask="#8E000000" RenderTransformOrigin="0.5,4.3689" VerticalAlignment="Top" Height="10.004">
+                <Path.RenderTransform>
+                    <RotateTransform Angle="0"/>
+                </Path.RenderTransform>
+            </Path>
+
+            <!-- Block 10 -->
+            <Path x:Name="block10" Fill="#FF5482A1" Stretch="Fill" Data="{StaticResource Block}" RenderTransformOrigin="0.5,4.3689" OpacityMask="#9C000000" VerticalAlignment="Top" Height="10.004">
+                <Path.RenderTransform>
+                    <RotateTransform Angle="20"/>
+                </Path.RenderTransform>
+            </Path>
+
+            <!-- Block 11 -->
+            <Path x:Name="block11" Fill="#FF5482A1" Stretch="Fill" Data="{StaticResource Block}" RenderTransformOrigin="0.5,4.3689" OpacityMask="#AA000000" VerticalAlignment="Top" Height="10.004">
+                <Path.RenderTransform>
+                    <RotateTransform Angle="40"/>
+                </Path.RenderTransform>
+            </Path>
+
+            <!-- Block 12 -->
+            <Path x:Name="block12" Fill="#FF5482A1" Stretch="Fill" Data="{StaticResource Block}" RenderTransformOrigin="0.5,4.3689" OpacityMask="#B8000000" VerticalAlignment="Top" Height="10.004">
+                <Path.RenderTransform>
+                    <RotateTransform Angle="60"/>
+                </Path.RenderTransform>
+            </Path>
+
+            <!-- Block 13 -->
+            <Path x:Name="block13" Fill="#FF5482A1" Stretch="Fill" Data="{StaticResource Block}" RenderTransformOrigin="0.5,4.3689" OpacityMask="#C6000000" VerticalAlignment="Top" Height="10.004">
+                <Path.RenderTransform>
+                    <RotateTransform Angle="80"/>
+                </Path.RenderTransform>
+            </Path>
+
+            <!-- Block 14 -->
+            <Path x:Name="block14" Fill="#FF5482A1" Stretch="Fill" Data="{StaticResource Block}" RenderTransformOrigin="0.5,4.3689" OpacityMask="#D4000000" VerticalAlignment="Top" Height="10.004">
+                <Path.RenderTransform>
+                    <RotateTransform Angle="100"/>
+                </Path.RenderTransform>
+            </Path>
+
+            <!-- Block 15 -->
+            <Path x:Name="block15" Fill="#FF5482A1" Stretch="Fill" Data="{StaticResource Block}" RenderTransformOrigin="0.5,4.3689" OpacityMask="#E2000000" VerticalAlignment="Top" Height="10.004">
+                <Path.RenderTransform>
+                    <RotateTransform Angle="120"/>
+                </Path.RenderTransform>
+            </Path>
+
+            <!-- Block 16 -->
+            <Path x:Name="block16" Fill="#FF5482A1" Stretch="Fill" Data="{StaticResource Block}" RenderTransformOrigin="0.5,4.3689" OpacityMask="#F0000000" VerticalAlignment="Top" Height="10.004">
+                <Path.RenderTransform>
+                    <RotateTransform Angle="140"/>
+                </Path.RenderTransform>
+            </Path>
+
+            <!-- Block 17 -->
+            <Path x:Name="block17" Fill="#FF5482A1" Stretch="Fill" Data="{StaticResource Block}" RenderTransformOrigin="0.5,4.3689" OpacityMask="Black" VerticalAlignment="Top" Height="10.004">
+                <Path.RenderTransform>
+                    <RotateTransform Angle="160"/>
+                </Path.RenderTransform>
+            </Path>
+
+        </Grid>
+    </Canvas>
+</UserControl>
