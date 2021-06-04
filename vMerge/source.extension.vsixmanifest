@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
     <Metadata>
-        <Identity Id="39d1c61d-9a6d-4d9c-a9ea-b81c4265333a" Version="2.0.5" Language="en-US" Publisher="seyfettin.yumlu" />
+        <Identity Id="39d1c61d-9a6d-4d9c-a9ea-b81c4265333a" Version="2.0.6" Language="en-US" Publisher="seyfettin.yumlu" />
         <DisplayName>vMerge VS2019</DisplayName>
         <Description xml:space="preserve">vMerge is a visual merge tool for Microsoft Team Foundation Server (tm) providing lots of additional features over the built-in merge capabilities.</Description>
         <MoreInfo>https://github.com/seyfiyumlu/vmerge</MoreInfo>

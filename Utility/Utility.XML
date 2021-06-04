@@ -3292,6 +3292,70 @@
             InitializeComponent
             </summary>
         </member>
+        <member name="T:qbusSRL.Utility.Helpers.Encoding.IUtf8Checker">
+            <summary>
+            Interface for checking for utf8.
+            </summary>
+        </member>
+        <member name="M:qbusSRL.Utility.Helpers.Encoding.IUtf8Checker.Check(System.String)">
+            <summary>
+            Check if file is utf8 encoded.
+            </summary>
+            <param name="fileName"></param>
+            <returns>true if utf8 encoded, otherwise false.</returns>
+        </member>
+        <member name="M:qbusSRL.Utility.Helpers.Encoding.IUtf8Checker.IsUtf8(System.IO.Stream)">
+            <summary>
+            Check if stream is utf8 encoded.
+            </summary>
+            <param name="stream"></param>
+            <returns>true if utf8 encoded, otherwise false.</returns>
+        </member>
+        <member name="T:qbusSRL.Utility.Helpers.Encoding.Utf8Checker">
+            <summary>
+            http://anubis.dkuug.dk/JTC1/SC2/WG2/docs/n1335
+            
+            http://www.cl.cam.ac.uk/~mgk25/ucs/ISO-10646-UTF-8.html
+            
+            http://www.unicode.org/versions/corrigendum1.html
+            
+            http://www.ietf.org/rfc/rfc2279.txt
+            
+            </summary>
+        </member>
+        <member name="M:qbusSRL.Utility.Helpers.Encoding.Utf8Checker.Check(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="fileName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:qbusSRL.Utility.Helpers.Encoding.Utf8Checker.IsUtf8(System.IO.Stream)">
+            <summary>
+            Check if stream is utf8 encoded.
+            Notice: stream is read completely in memory!
+            </summary>
+            <param name="stream">Stream to read from.</param>
+            <returns>True if the whole stream is utf8 encoded.</returns>
+        </member>
+        <member name="M:qbusSRL.Utility.Helpers.Encoding.Utf8Checker.IsUtf8(System.Byte[],System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="buffer"></param>
+            <param name="length"></param>
+            <returns></returns>
+        </member>
+        <member name="M:qbusSRL.Utility.Helpers.Encoding.Utf8Checker.IsValid(System.Byte[],System.Int32,System.Int32,System.Int32@)">
+            <summary>
+            
+            </summary>
+            <param name="buffer"></param>
+            <param name="position"></param>
+            <param name="length"></param>
+            <param name="bytes"></param>
+            <returns></returns>
+        </member>
         <member name="T:qbusSRL.Utility.Helpers.Messenger.Messenger">
             <summary>
             Sending Messages between different ViewModels for coupling without reference. 
@@ -3406,6 +3470,36 @@
         <member name="T:qbusSRL.Utility.Helpers.Messenger.OpenLogMessage">
             <summary>
             Object just to call Message to open the LogView
+            </summary>
+        </member>
+        <member name="T:XamlGeneratedNamespace.GeneratedInternalTypeHelper">
+            <summary>
+            GeneratedInternalTypeHelper
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.CreateInstance(System.Type,System.Globalization.CultureInfo)">
+            <summary>
+            CreateInstance
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.GetPropertyValue(System.Reflection.PropertyInfo,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            GetPropertyValue
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.SetPropertyValue(System.Reflection.PropertyInfo,System.Object,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            SetPropertyValue
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.CreateDelegate(System.Type,System.Object,System.String)">
+            <summary>
+            CreateDelegate
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.AddEventHandler(System.Reflection.EventInfo,System.Object,System.Delegate)">
+            <summary>
+            AddEventHandler
             </summary>
         </member>
     </members>

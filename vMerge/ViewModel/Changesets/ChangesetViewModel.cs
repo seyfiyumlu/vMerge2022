@@ -806,7 +806,7 @@ namespace alexbegh.vMerge.ViewModel.Changesets
             {
                 try
                 {
-                    reUser = new Regex(IncludeUserFilter.ToLower());
+                    reUser = new Regex(IncludeUserFilter?.ToLower());
                 }
                 catch (Exception)
                 {

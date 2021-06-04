@@ -97,7 +97,7 @@ namespace qbusSRL.vMerge {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 2.0.0.5.
+        ///   Looks up a localized string similar to 2.0.0.6.
         /// </summary>
         internal static string Version {
             get {

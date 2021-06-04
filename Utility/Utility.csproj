@@ -102,6 +102,8 @@
     <Compile Include="Helpers\Converters\NoOpConverter.cs" />
     <Compile Include="Helpers\Converters\StringToSingleLineConverter.cs" />
     <Compile Include="Helpers\Collections\FilteredReadOnlyObservableCollection.cs" />
+    <Compile Include="Helpers\Encoding\IUtf8Checker.cs" />
+    <Compile Include="Helpers\Encoding\Utf8Checker.cs" />
     <Compile Include="Helpers\Escaping\OnlyASCIICharacters.cs" />
     <Compile Include="Helpers\ExtensionMethods\StringExtensions.cs" />
     <Compile Include="Helpers\ExtensionMethods\TypeExtensions.cs" />
