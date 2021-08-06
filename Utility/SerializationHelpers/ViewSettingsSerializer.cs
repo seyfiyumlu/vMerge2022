@@ -97,7 +97,7 @@ namespace alexbegh.Utility.SerializationHelpers
                         var colElem = item.SelectSingleNode("column[@idx=" + col.DisplayIndex + "]") as XmlElement;
                         if (colElem != null)
                         {
-                            col.Width = int.Parse(colElem.GetAttribute("width"), CultureInfo.InvariantCulture);
+                            col.Width = double.Parse(colElem.GetAttribute("width"), CultureInfo.InvariantCulture);
                             col.Visibility = (Visibility)Enum.Parse(typeof(Visibility), colElem.GetAttribute("visibility"));
                         }
                     }
