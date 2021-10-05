@@ -113,7 +113,7 @@ namespace alexbegh.Utility.Managers.View
                 catch (Exception ex)
                 {
 
-                    SimpleLogger.Log(SimpleLogLevel.Error, "Couldn't load assembly " + assembly.ToString());
+                    SimpleLogger.Log(SimpleLogLevel.Error, "Couldn't load assembly " + assembly.ToString() + "->" + ex.Message);
                     SimpleLogger.Log(SimpleLogLevel.Error, ex.ToString());
                 }
             }

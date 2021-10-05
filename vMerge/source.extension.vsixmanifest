@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
     <Metadata>
-        <Identity Id="B7EA39B8-F705-40E8-B008-0E2E503293A7" Version="2.0.6" Language="en-US" Publisher="seyfettin.yumlu" />
+        <Identity Id="DD29E551-59CD-4353-9B69-CBDDAFB09756" Version="2.0.7" Language="en-US" Publisher="seyfettin.yumlu" />
         <DisplayName>vMerge VS2019</DisplayName>
         <Description xml:space="preserve">vMerge is a visual merge tool for Microsoft Team Foundation Server (tm) providing lots of additional features over the built-in merge capabilities.</Description>
         <MoreInfo>https://github.com/seyfiyumlu/vmerge</MoreInfo>
@@ -18,7 +18,7 @@
     </Installation>
     <Dependencies>
         <Dependency Id="Microsoft.Framework.NDP" DisplayName="Microsoft .NET Framework" d:Source="Manual" Version="4.7" />
-        <Dependency Id="Microsoft.VisualStudio.MPF.11.0" DisplayName="Visual Studio MPF 11.0" d:Source="Installed" Version="11.0" />
+        <Dependency Id="Microsoft.VisualStudio.MPF.16.0" DisplayName="Visual Studio MPF 16.0" d:Source="Installed" Version="[16.0,17.0)" />
     </Dependencies>
     <Assets>
         <Asset Type="Microsoft.VisualStudio.VsPackage" d:Source="Project" d:ProjectName="%CurrentProject%" Path="|%CurrentProject%;PkgdefProjectOutputGroup|" />
