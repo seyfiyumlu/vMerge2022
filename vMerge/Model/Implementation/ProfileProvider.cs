@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using alexbegh.Utility.Helpers.Logging;
 using alexbegh.Utility.SerializationHelpers;
 using alexbegh.vMerge.Model.Interfaces;
 
@@ -61,7 +62,7 @@ namespace alexbegh.vMerge.Model.Implementation
             if (Repository.Instance.TfsBridgeProvider.ActiveTeamProject == null)
                 return null;
 
-            if (teamProjectUri==null)
+            if (teamProjectUri == null)
                 teamProjectUri = Repository.Instance.TfsBridgeProvider.ActiveTeamProject.ArtifactUri;
 
             SerializableDictionary<string, ProfileSettings> result = null;
@@ -73,9 +74,17 @@ namespace alexbegh.vMerge.Model.Implementation
             ProfileSettings settings = null;
             if (result.TryGetValue("__Default", out settings) == false)
             {
-                var teamProject = Repository.Instance.TfsBridgeProvider.VersionControlServer.GetAllTeamProjects(false).Where(tp => tp.ArtifactUri.Equals(teamProjectUri)).FirstOrDefault();
-                settings = new ProfileSettings(teamProjectUri.ToString(), teamProject.Name, "__Default", SetProfileDirty);
-                result["__Default"] = settings;
+                try
+                {
+                    var teamProject = Repository.Instance.TfsBridgeProvider.VersionControlServer.GetAllTeamProjects(false).Where(tp => tp.ArtifactUri.Equals(teamProjectUri)).FirstOrDefault();
+                    settings = new ProfileSettings(teamProjectUri.ToString(), teamProject.Name, "__Default", SetProfileDirty);
+                    result["__Default"] = settings;
+                }
+                catch (Exception ex)
+                {
+                    SimpleLogger.Log(ex);
+                    result["__Default"] = new ProfileSettings();
+                }
             }
             return settings;
         }
@@ -96,7 +105,7 @@ namespace alexbegh.vMerge.Model.Implementation
 
             return result.Values.Where(value => value.Name != "__Default");
         }
-        
+
         public IEnumerable<IProfileSettings> GetAllProfiles()
         {
             return Profiles.Values.SelectMany(item => item.Values).Where(item => item.Name != "__Default");
@@ -137,7 +146,7 @@ namespace alexbegh.vMerge.Model.Implementation
 
         public bool DeleteProfile(Uri teamProjectUri, string profileName)
         {
-            if (_activeProfile != null && _activeProfile.TeamProject==teamProjectUri.ToString() && _activeProfile.Name == profileName)
+            if (_activeProfile != null && _activeProfile.TeamProject == teamProjectUri.ToString() && _activeProfile.Name == profileName)
             {
                 _activeProfile = null;
             }
@@ -160,7 +169,7 @@ namespace alexbegh.vMerge.Model.Implementation
                 ActiveProjectProfileListChanged(this, EventArgs.Empty);
             if (ProfilesChanged != null)
                 ProfilesChanged(this, EventArgs.Empty);
-           
+
             SetProfileDirty(null);
             return true;
         }
@@ -191,10 +200,10 @@ namespace alexbegh.vMerge.Model.Implementation
             var defaultProfile = GetDefaultProfile();
             mostRecentSettings = _activeProfile;
             alreadyModified = false;
-            if (defaultProfile==null)
+            if (defaultProfile == null)
                 return false;
 
-            if (mostRecentSettings==null)
+            if (mostRecentSettings == null)
             {
                 alreadyModified = true;
             }
