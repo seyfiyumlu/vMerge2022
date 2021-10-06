@@ -164,7 +164,7 @@
   </Commands>
   <Symbols>
     <!-- This is the package guid. -->
-    <GuidSymbol name="guidvMergePkg" value="{B7EA39B8-F705-40E8-B008-0E2E503293A7}" />
+    <GuidSymbol name="guidvMergePkg" value="{DD29E551-59CD-4353-9B69-CBDDAFB09756}" />
     <GuidSymbol name="guidImages" value="{8971da14-a564-4eca-be6c-eae4cbd30088}">
       <IDSymbol name="bmpPic1" value="1" />
       <IDSymbol name="bmpPic2" value="2" />
