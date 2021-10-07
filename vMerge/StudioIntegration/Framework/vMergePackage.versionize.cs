@@ -27,9 +27,6 @@ using alexbegh.vMerge.View;
 using System.Windows.Forms;
 using alexbegh.Utility.Helpers.ViewModel;
 using qbusSRL.vMerge;
-using System.Threading;
-using Microsoft.VisualStudio.Shell;
-using Task = System.Threading.Tasks.Task;
 
 namespace alexbegh.vMerge.StudioIntegration.Framework
 {
@@ -45,7 +42,7 @@ namespace alexbegh.vMerge.StudioIntegration.Framework
     /// </summary>
     // This attribute tells the PkgDef creation utility (CreatePkgDef.exe) that this class is
     // a package.
-    [PackageRegistration(UseManagedResourcesOnly = true, AllowsBackgroundLoading = true)]
+    [PackageRegistration(UseManagedResourcesOnly = true)]
     // This attribute is used to register the information needed to show this package
     // in the Help/About dialog of Visual Studio.
     [InstalledProductRegistration("#110", "#112", "{{VERSION}}", IconResourceID = 400)]
@@ -55,16 +52,16 @@ namespace alexbegh.vMerge.StudioIntegration.Framework
     [ProvideToolWindow(typeof(vMergeWorkItemsToolWindow))]
     [ProvideToolWindow(typeof(vMergeChangesetsToolWindow))]
     [ProvideToolWindow(typeof(vMergeMergeToolWindow), Transient = true)]
-    [ProvideAutoLoad(VSConstants.UICONTEXT.NoSolution_string, PackageAutoLoadFlags.BackgroundLoad)]
-    [ProvideAutoLoad(VSConstants.UICONTEXT.EmptySolution_string, PackageAutoLoadFlags.BackgroundLoad)]
-    [ProvideAutoLoad(VSConstants.UICONTEXT.SolutionHasMultipleProjects_string, PackageAutoLoadFlags.BackgroundLoad)]
-    [ProvideAutoLoad(VSConstants.UICONTEXT.SolutionHasSingleProject_string, PackageAutoLoadFlags.BackgroundLoad)]
-    [ProvideAutoLoad("{e13eedef-b531-4afe-9725-28a69fa4f896}", PackageAutoLoadFlags.BackgroundLoad)]
+    [ProvideAutoLoad(VSConstants.UICONTEXT.NoSolution_string)]
+    [ProvideAutoLoad(VSConstants.UICONTEXT.EmptySolution_string)]
+    [ProvideAutoLoad(VSConstants.UICONTEXT.SolutionHasMultipleProjects_string)]
+    [ProvideAutoLoad(VSConstants.UICONTEXT.SolutionHasSingleProject_string)]
+    [ProvideAutoLoad("{e13eedef-b531-4afe-9725-28a69fa4f896}")]
     [ProvideOptionPage(typeof(vMergeOptionsPage), "vMerge", "Options", 113, 114, true)]
     [ProvideOptionPage(typeof(vMergeProfilesPage), "vMerge", "Profiles", 113, 115, true)]
     [ProvideBindingPath]
     [Guid(GuidList.guidvMergePkgString)]
-    public sealed class vMergePackage : AsyncPackage, IVsSelectionEvents
+    public sealed class vMergePackage : Package, IVsSelectionEvents
     {
         private EnvDTE80.Events2 _events;
 
@@ -473,14 +470,14 @@ namespace alexbegh.vMerge.StudioIntegration.Framework
 
             var windowEvents = new ToolWindowEvents(windowFrame);
             windowEvents.OnClose = (options) =>
-                {
-                    MergeToolWindowIsVisible = false;
-                    if (_mergeToolWindowVisibilityChanged != null)
-                        _mergeToolWindowVisibilityChanged(this, new EventArgs());
-                    windowFrame.SetProperty((int)__VSFPROPID.VSFPROPID_ViewHelper, null);
-                    windowEvents.Dispose();
-                    return VSConstants.S_OK;
-                };
+            {
+                MergeToolWindowIsVisible = false;
+                if (_mergeToolWindowVisibilityChanged != null)
+                    _mergeToolWindowVisibilityChanged(this, new EventArgs());
+                windowFrame.SetProperty((int)__VSFPROPID.VSFPROPID_ViewHelper, null);
+                windowEvents.Dispose();
+                return VSConstants.S_OK;
+            };
             windowFrame.SetProperty((int)__VSFPROPID.VSFPROPID_ViewHelper, windowEvents);
 
             vMergeMergeToolWindow mergeToolWindow = (vMergeMergeToolWindow)window;
@@ -497,21 +494,18 @@ namespace alexbegh.vMerge.StudioIntegration.Framework
         /// Initialization of the package; this method is called right after the package is sited, so this is the place
         /// where you can put all the initialization code that rely on services provided by VisualStudio.
         /// </summary>
-        protected async override Task InitializeAsync(CancellationToken cancellationToken, IProgress<ServiceProgressData> progress)
+        protected override void Initialize()
         {
-            
-
             try
             {
-                
-                await base.InitializeAsync(cancellationToken, progress);
+                base.Initialize();
                 SetTheme();
 
-                //IVsMonitorSelection monitorSelection = (IVsMonitorSelection)Package.GetGlobalService(typeof(SVsShellMonitorSelection));
-                //monitorSelection.AdviseSelectionEvents(this, out cookie);
+                IVsMonitorSelection monitorSelection = (IVsMonitorSelection)Package.GetGlobalService(typeof(SVsShellMonitorSelection));
+                monitorSelection.AdviseSelectionEvents(this, out cookie);
 
                 // Add our command handlers for menu (commands must exist in the .vsct file)
-                OleMenuCommandService mcs = await GetServiceAsync(typeof(IMenuCommandService)) as OleMenuCommandService;
+                OleMenuCommandService mcs = GetService(typeof(IMenuCommandService)) as OleMenuCommandService;
 
                 if (null != mcs)
                 {
@@ -543,12 +537,12 @@ namespace alexbegh.vMerge.StudioIntegration.Framework
                         (args) => GetActiveProfile());
                 }
 
-                var dte = await GetServiceAsync(typeof(EnvDTE.DTE)) as EnvDTE.DTE;
+                var dte = GetGlobalService(typeof(EnvDTE.DTE)) as EnvDTE.DTE;
                 _events = dte.Events as EnvDTE80.Events2;
                 _events.WindowVisibilityEvents.WindowHiding += WindowVisibilityEvents_WindowHiding;
                 _events.WindowVisibilityEvents.WindowShowing += WindowVisibilityEvents_WindowShowing;
 
-                ((VsTfsUIInteractionProvider)Repository.Instance.TfsUIInteractionProvider).UIShell = await GetServiceAsync(typeof(SVsUIShell)) as IVsUIShell;
+                ((VsTfsUIInteractionProvider)Repository.Instance.TfsUIInteractionProvider).UIShell = GetService(typeof(SVsUIShell)) as IVsUIShell;
                 Microsoft.VisualStudio.PlatformUI.VSColorTheme.ThemeChanged += (a) => SetTheme();
             }
             catch (Exception ex)
