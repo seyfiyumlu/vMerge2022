@@ -204,7 +204,7 @@ namespace alexbegh.vMerge.StudioIntegration.Framework
 
             string targetPath =
                 Path.Combine(
-                    Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "vMerge",
+                    Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "vMerge2022",
                     "qbus.vMerge.settings");
             try
             {

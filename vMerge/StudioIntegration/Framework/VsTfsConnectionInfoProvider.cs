@@ -14,7 +14,7 @@ namespace alexbegh.vMerge.StudioIntegration.Framework
         internal VsTfsConnectionInfoProvider()
         {
             var dte = ServiceProvider.GlobalProvider.GetService(typeof(EnvDTE.DTE)) as EnvDTE.DTE;
-            TeamFoundationServerExt tfse = dte.GetObject("Microsoft.VisualStudio.TeamFoundation.TeamFoundationServerExt") as TeamFoundationServerExt;
+            var tfse = dte.GetObject("Microsoft.VisualStudio.TeamFoundation.TeamFoundationServerExt") as TeamFoundationServerExt;
             tfse.ProjectContextChanged += VsTfsProjectContextChanged;
         }
         #endregion

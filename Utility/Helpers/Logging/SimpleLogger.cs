@@ -89,7 +89,7 @@ namespace alexbegh.Utility.Helpers.Logging
 
             var basePath = Path.Combine(
                 Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData, Environment.SpecialFolderOption.Create),
-                Assembly.GetCallingAssembly().GetName().Name);
+                Assembly.GetCallingAssembly().GetName().Name+"2022");
 
             RollateLog(basePath, logName);
 

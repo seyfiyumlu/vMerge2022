@@ -527,7 +527,10 @@ namespace alexbegh.vMerge.ViewModel.Merge
                             otherExceptions = true;
                     }
                     if (otherExceptions)
+                    {
                         SimpleLogger.Log(ex, true);
+                        ReportException(ex);
+                    }
                 }
                 catch (LocalPathTooLongException)
                 {
@@ -537,6 +540,7 @@ namespace alexbegh.vMerge.ViewModel.Merge
                 catch (Exception ex)
                 {
                     SimpleLogger.Log(ex);
+                    ReportException(ex);
                     return false;
                 }
 

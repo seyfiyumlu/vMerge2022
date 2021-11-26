@@ -28,7 +28,14 @@ namespace alexbegh.vMerge.Model.Implementation
             SerializedSettings = new SerializableDictionary<string, object>();
             Lock = new object();
             ChangeListeners = new Dictionary<string, WeakReferenceList<ISettingsChangeListener>>();
-            Serializer.RegisterAssemblyTypes();
+            try
+            {
+                Serializer.RegisterAssemblyTypes();
+            }
+            catch (Exception)
+            {
+
+            }
         }
         #endregion
 
@@ -177,13 +184,15 @@ namespace alexbegh.vMerge.Model.Implementation
         public void SaveSettings(string name)
         {
             string path = Path.Combine(
-                Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "vMerge", name + ".qvmset");
+                Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "vMerge2022", Path.GetFileName(name) + ".qvmset");
             string pathBak = Path.Combine(
-                Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "vMerge", name + ".bak.qvmset");
+                Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "vMerge2022", Path.GetFileName(name) + ".bak.qvmset");
             lock (Lock)
             {
                 if (SerializedSettings == null)
                     return;
+                if (!Directory.Exists(Path.GetDirectoryName(path)))
+                    Directory.CreateDirectory(Path.GetDirectoryName(path));
 
                 if (File.Exists(path))
                     File.Copy(path, pathBak, true);
@@ -195,7 +204,7 @@ namespace alexbegh.vMerge.Model.Implementation
                 }
                 catch (Exception ex)
                 {
-                    
+
                     SimpleLogger.Log(SimpleLogLevel.Error, ex.ToString());
                 }
             }
@@ -264,7 +273,7 @@ namespace alexbegh.vMerge.Model.Implementation
                                 }
                                 catch (Exception ex)
                                 {
-                                    SimpleLogger.Log(SimpleLogLevel.Error,ex.ToString());
+                                    SimpleLogger.Log(SimpleLogLevel.Error, ex.ToString());
                                 }
                             }
                         }
