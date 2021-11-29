@@ -70,7 +70,7 @@ namespace qbusSRL.vMerge {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to vMerge 2019 - Changesets.
+        ///   Looks up a localized string similar to vMerge 2022 - Changesets.
         /// </summary>
         internal static string ChangesetToolWindowTitle {
             get {
@@ -79,7 +79,7 @@ namespace qbusSRL.vMerge {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to VS2019.
+        ///   Looks up a localized string similar to VS2022.
         /// </summary>
         internal static string Edition {
             get {
@@ -88,7 +88,7 @@ namespace qbusSRL.vMerge {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to vMerge 2019 - Merge.
+        ///   Looks up a localized string similar to vMerge 2022 - Merge.
         /// </summary>
         internal static string MergeToolWindowTitle {
             get {
@@ -97,7 +97,7 @@ namespace qbusSRL.vMerge {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 2.0.0.6.
+        ///   Looks up a localized string similar to 2.0.0.9.
         /// </summary>
         internal static string Version {
             get {
@@ -106,7 +106,7 @@ namespace qbusSRL.vMerge {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to vMerge 2019 - Work Items.
+        ///   Looks up a localized string similar to vMerge 2022 - Work Items.
         /// </summary>
         internal static string WorkItemToolWindowTitle {
             get {

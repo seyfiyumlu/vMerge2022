@@ -121,18 +121,18 @@
     <value>Can not create tool window.</value>
   </data>
   <data name="ChangesetToolWindowTitle" xml:space="preserve">
-    <value>vMerge 2019 - Changesets</value>
+    <value>vMerge 2022 - Changesets</value>
   </data>
   <data name="Edition" xml:space="preserve">
-    <value>VS2019</value>
+    <value>VS2022</value>
   </data>
   <data name="MergeToolWindowTitle" xml:space="preserve">
-    <value>vMerge 2019 - Merge</value>
+    <value>vMerge 2022 - Merge</value>
   </data>
   <data name="Version" xml:space="preserve">
-    <value>2.0.0.6</value>
+    <value>2.0.0.9</value>
   </data>
   <data name="WorkItemToolWindowTitle" xml:space="preserve">
-    <value>vMerge 2019 - Work Items</value>
+    <value>vMerge 2022 - Work Items</value>
   </data>
 </root>

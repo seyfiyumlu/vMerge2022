@@ -121,8 +121,8 @@
     <value>vMerge</value>
   </data>
   <data name="112" xml:space="preserve">
-    <value>A visual merge extension for Microsoft Visual Studio 2019 (tm).
-Visit https://github.com/seyfiyumlu/vmerge for more information.</value>
+    <value>A visual merge extension for Microsoft Visual Studio 2022 (tm).
+Visit https://github.com/seyfiyumlu/vMerge2022 for more information.</value>
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="400" type="System.Resources.ResXFileRef, System.Windows.Forms">

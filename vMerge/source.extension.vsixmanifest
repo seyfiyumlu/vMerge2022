@@ -1,39 +1,33 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
-    <Metadata>
-        <Identity Id="DD29E551-59CD-4353-9B69-CBDDAFB09756" Version="2.0.9" Language="en-US" Publisher="seyfettin.yumlu" />
-        <DisplayName>vMerge VS2022</DisplayName>
-        <Description xml:space="preserve">vMerge is a visual merge tool for Microsoft Team Foundation Server (tm) providing lots of additional features over the built-in merge capabilities.</Description>
-        <MoreInfo>https://github.com/seyfiyumlu/vmerge</MoreInfo>
-        <License>LICENCE.txt</License>
-        <GettingStartedGuide>LICENCE.txt</GettingStartedGuide>
-        <ReleaseNotes>LICENCE.txt</ReleaseNotes>
-        <Icon>vMerge_small.png</Icon>
-        <PreviewImage>vMerge Image 200x200.png</PreviewImage>
-        <Tags>Microsoft Team Foundation Server; vMerge; visual merge; xeam; cherry picking; work item based merge; merge; changeset merge; work item merge; workitem merge</Tags>
-    </Metadata>
-    <Installation InstalledByMsi="false">
-        <InstallationTarget Version="[17.0,18.0)" Id="Microsoft.VisualStudio.Pro">
-            <ProductArchitecture>amd64</ProductArchitecture>
-        </InstallationTarget>
-        <InstallationTarget Version="[17.0,18.0)" Id="Microsoft.VisualStudio.Enterprise">
-            <ProductArchitecture>amd64</ProductArchitecture>
-        </InstallationTarget>
-        <InstallationTarget Version="[17.0,18.0)" Id="Microsoft.VisualStudio.Pro">
-            <ProductArchitecture>x86</ProductArchitecture>
-        </InstallationTarget>
-        <InstallationTarget Version="[17.0,18.0)" Id="Microsoft.VisualStudio.Enterprise">
-            <ProductArchitecture>x86</ProductArchitecture>
-        </InstallationTarget>
-    </Installation>
-    <Dependencies>
-        <Dependency Id="Microsoft.Framework.NDP" DisplayName="Microsoft .NET Framework" d:Source="Manual" Version="4.7" />
-        <Dependency Id="Microsoft.VisualStudio.MPF.11.0" DisplayName="Visual Studio MPF 11.0" d:Source="Installed" Version="11.0" />
-    </Dependencies>
-    <Assets>
-        <Asset Type="Microsoft.VisualStudio.VsPackage" d:Source="Project" d:ProjectName="%CurrentProject%" Path="|%CurrentProject%;PkgdefProjectOutputGroup|" />
-    </Assets>
-    <Prerequisites>
-        <Prerequisite Id="Microsoft.Net.Component.4.7.2.TargetingPack" Version="[16.9.31004.209,18.0)" DisplayName=".NET Framework 4.7.2 targeting pack" />
-    </Prerequisites>
+	<Metadata>
+		<Identity Id="99D79E87-41FB-4C86-89D4-A4A5CC085E09" Version="2.0.9" Language="en-US" Publisher="SeyfettinYUMLU" />
+		<DisplayName>vMerge VS2022</DisplayName>
+		<Description xml:space="preserve">vMerge is a visual merge tool for Microsoft Team Foundation Server (tm) providing lots of additional features over the built-in merge capabilities.</Description>
+		<MoreInfo>https://github.com/seyfiyumlu/vmerge</MoreInfo>
+		<License>LICENCE.txt</License>
+		<GettingStartedGuide>LICENCE.txt</GettingStartedGuide>
+		<ReleaseNotes>LICENCE.txt</ReleaseNotes>
+		<Icon>vMerge_small.png</Icon>
+		<PreviewImage>vMerge Image 200x200.png</PreviewImage>
+		<Tags>Microsoft Team Foundation Server; vMerge; visual merge; xeam; cherry picking; work item based merge; merge; changeset merge; work item merge; workitem merge</Tags>
+	</Metadata>
+	<Installation InstalledByMsi="false">
+		<InstallationTarget Version="[17.0,18.0)" Id="Microsoft.VisualStudio.Pro">
+			<ProductArchitecture>amd64</ProductArchitecture>
+		</InstallationTarget>
+		<InstallationTarget Version="[17.0,18.0)" Id="Microsoft.VisualStudio.Enterprise">
+			<ProductArchitecture>amd64</ProductArchitecture>
+		</InstallationTarget>
+	</Installation>
+	<Dependencies>
+		<Dependency Id="Microsoft.Framework.NDP" DisplayName="Microsoft .NET Framework" d:Source="Manual" Version="4.7" />
+		<Dependency Id="Microsoft.VisualStudio.MPF.11.0" DisplayName="Visual Studio MPF 11.0" d:Source="Installed" Version="11.0" />
+	</Dependencies>
+	<Assets>
+		<Asset Type="Microsoft.VisualStudio.VsPackage" d:Source="Project" d:ProjectName="%CurrentProject%" Path="|%CurrentProject%;PkgdefProjectOutputGroup|" />
+	</Assets>
+	<Prerequisites>
+		<Prerequisite Id="Microsoft.Net.Component.4.7.2.TargetingPack" Version="[16.9.31004.209,18.0)" DisplayName=".NET Framework 4.7.2 targeting pack" />
+	</Prerequisites>
 </PackageManifest>
