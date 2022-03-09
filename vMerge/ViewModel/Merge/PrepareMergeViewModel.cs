@@ -590,18 +590,22 @@ namespace alexbegh.vMerge.ViewModel.Merge
                         item.SourceChangeset, mergeChangeset);
 
 
-                    foreach (var changes in checkInSummary.Changes)
+                    if (Repository.Instance.Settings.FetchSettings<bool>(Constants.Settings.IsCheckUtf8))
                     {
-                        var utfChecker = new Utf8Checker();
-
-                        if (!utfChecker.Check(changes.Change.PendingChange.LocalItem))
+                        foreach (var changes in checkInSummary.Changes)
                         {
-                            var mbvm = new MessageBoxViewModel("Encoding Problem",
-                                "Merged file encoding is not utf-8. Please merge your changeset with default merge editor.", MessageBoxViewModel.MessageBoxButtons.OK);
-                            Repository.Instance.ViewManager.ShowModal(mbvm);
-                            throw new Exception("Merged file encoding not utf-8");
+                            var utfChecker = new Utf8Checker();
+
+                            if (!utfChecker.Check(changes.Change.PendingChange.LocalItem))
+                            {
+                                var mbvm = new MessageBoxViewModel("Encoding Problem",
+                                    "Merged file encoding is not utf-8. Please merge your changeset with default merge editor.", MessageBoxViewModel.MessageBoxButtons.OK);
+                                Repository.Instance.ViewManager.ShowModal(mbvm);
+                                throw new Exception("Merged file encoding not utf-8");
+                            }
                         }
                     }
+                    
 
 
                     if (hadConflicts || (externalProgress == null && AutoMergeDirectly == false))

@@ -162,6 +162,13 @@ namespace alexbegh.vMerge.ViewModel.Options
             }
         }
 
+        private bool _isCheckUtf8;
+        public bool IsCheckUtf8
+        {
+            get { return _isCheckUtf8; }
+            set { Set(ref _isCheckUtf8,value); }
+        }
+
         private bool _storing = false;
 
         public GeneralOptionsViewModel()
@@ -194,6 +201,7 @@ namespace alexbegh.vMerge.ViewModel.Options
             CheckInCommentTemplate = Repository.Instance.Settings.FetchSettings<string>(Constants.Settings.CheckInCommentTemplateKey);
             HideSplashScreen = Repository.Instance.Settings.FetchSettings<bool>(Constants.Settings.HideSplashScreenKey);
             PerformNonModalMerge = Repository.Instance.Settings.FetchSettings<bool>(Constants.Settings.PerformNonModalMergeKey);
+            IsCheckUtf8 = Repository.Instance.Settings.FetchSettings<bool>(Constants.Settings.IsCheckUtf8);
         }
 
         private void StoreToRepository()
@@ -208,6 +216,8 @@ namespace alexbegh.vMerge.ViewModel.Options
                 Repository.Instance.Settings.SetSettings(Constants.Settings.SelectedThemeKey, SelectedTheme);
                 Repository.Instance.Settings.SetSettings(Constants.Settings.HideSplashScreenKey, HideSplashScreen);
                 Repository.Instance.Settings.SetSettings(Constants.Settings.PerformNonModalMergeKey, PerformNonModalMerge);
+                Repository.Instance.Settings.SetSettings(Constants.Settings.IsCheckUtf8, IsCheckUtf8);
+
             }
             finally
             {

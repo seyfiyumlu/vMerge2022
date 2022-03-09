@@ -28,6 +28,10 @@
                     </StackPanel>
                 </StackPanel>
                 <Separator Margin="10,10,10,10"/>
+                <CheckBox Margin="0,0,0,10" IsChecked="{Binding IsCheckUtf8}">
+                    <TextBlock>Ensure the merged file is utf-8</TextBlock>
+                </CheckBox>
+                <Separator Margin="10,10,10,10"/>
                 <CheckBox Margin="0,0,0,10" IsChecked="{Binding HideSplashScreen}">
                     <TextBlock>Hide splash screen on startup</TextBlock>
                 </CheckBox>

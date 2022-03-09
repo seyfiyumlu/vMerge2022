@@ -25,6 +25,8 @@ namespace alexbegh.vMerge.Constants
         public const string PrepareMergeDialogWindowViewSettingsKey = "PrepareMergeDialogWindowViewSettings";
         public const string ModalMergeDialogWindowSettingsKey = "ModalMergeDialogWindowSettings";
         public const string ConfigureColumnsWindowSettingsKey = "COnfigureColumnsWindowSettings";
+        public const string IsCheckUtf8 = "IsCheckUtf8";
+
 
         public static string GetBranchCacheKeyForProjectCollectionUri(Uri projectCollection)
         {
