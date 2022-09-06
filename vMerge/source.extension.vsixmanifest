@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
     <Metadata>
-        <Identity Id="99D79E87-41FB-4C86-89D4-A4A5CC085E09" Version="2.0.11" Language="en-US" Publisher="SeyfettinYUMLU" />
+        <Identity Id="99D79E87-41FB-4C86-89D4-A4A5CC085E09" Version="2.0.12" Language="en-US" Publisher="SeyfettinYUMLU" />
         <DisplayName>vMerge VS2022</DisplayName>
         <Description xml:space="preserve">vMerge is a visual merge tool for Microsoft Team Foundation Server (tm) providing lots of additional features over the built-in merge capabilities.</Description>
         <MoreInfo>https://github.com/seyfiyumlu/vmerge</MoreInfo>
